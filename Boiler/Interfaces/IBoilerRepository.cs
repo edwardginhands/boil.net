@@ -9,5 +9,6 @@ namespace Boiler
     {
         Boiler Save(Boiler boiler);
         Boiler Retrieve();
+        int GetTemperature();
     }
 }

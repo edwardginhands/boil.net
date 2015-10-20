@@ -35,6 +35,12 @@ namespace Boiler
             return boiler;
         }
 
+        public int GetTemperature()
+        {
+            Random r = new Random();
+            return r.Next(10, 90);
+        }
+
         private bool WriteData(Boiler boiler)
         {
             // Write out the Json

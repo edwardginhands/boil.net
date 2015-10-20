@@ -8,7 +8,7 @@
     <link href="Content/bootstrap.css" rel="stylesheet" />
 </head>
 
-<body ng-app="boilerManagement">
+<body>
     <nav class="navbar navbar-default">
         <div class="container-fluid">
             <div class="navbar-header">
@@ -22,10 +22,18 @@
     </div>
 
     <!-- Library Scripts -->
+    <script src="Scripts/jquery-2.1.4.min.js"></script>
+    <script src="Scripts/jquery.signalR-2.2.0.min.js"></script>
+
     <script src="scripts/angular.js"></script>
     <script src="Scripts/angular-resource.js"></script>
     <script src="Scripts/angular-ui/ui-bootstrap.js"></script>
 
+    <script src="signalr/hubs"></script>
+
+    <script src="common/psWebMetricsService.js"></script>
+    <script src="common/psGaugeModule.js"></script>
+    <script src="common/psGaugeDirective.js"></script>
 
     <!-- Application Script -->
     <script src="app/app.js"></script>
@@ -36,6 +44,14 @@
 
     <!-- Product Controllers -->
     <script src="app/products/boilerCtrl.js"></script>
+
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script>
+        google.load("visualization", "1", { packages: ["gauge"] });
+        google.setOnLoadCallback(function () {
+            angular.bootstrap(document, ['boilerManagement']);
+            });
+    </script>
 
 </body>
 

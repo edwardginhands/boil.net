@@ -6,6 +6,7 @@
     </div>
 
     <div class="panel-body">
+        <ps-gauge metric="temp" title="Temp"></ps-gauge>
         <table class="table" name="table">
             <tbody>
                 <tr>
@@ -24,17 +25,17 @@
                 <tr>
                     <td>Target Temp</td>
                     <td>
-                        <input type="number" name="input" ng-model="vm.boiler.targetTemp" min="0" max="100" required>
+                        <input type="number" name="inputTargetTemp" ng-model="vm.boiler.targetTemp" min="0" max="100" required>
                  </td>
                 </tr>
                 <tr>
                     <td>Offset</td>
-                    <td><input type="number" name="input" ng-model="vm.boiler.tempOffset" min="0" max="5" required></td>
+                    <td><input type="number" name="inputTempOffset" ng-model="vm.boiler.tempOffset" min="0" max="5" required></td>
                 </tr>
             </tbody>
 
         </table>
-
+        
     </div>
 </div>
 
