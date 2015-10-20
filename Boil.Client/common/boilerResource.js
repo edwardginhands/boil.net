@@ -15,7 +15,7 @@
                 'update': { method: 'PUT' }
             });
             */
-        return $resource(appSettings.serverPath + "/api/boiler", {}, { query: { method: "GET", isArray: false } });
+        return $resource(appSettings.serverPath + "/api/boiler", {}, { query: { method: "GET", isArray: false }, update: { method: 'PUT' } });
     }
 
 }());
