@@ -1,9 +1,0 @@
-{
-  "IsElementOn": false,
-  "IsPumpOn": false,
-  "IsBurstOn": false,
-  "BurstTime": 10,
-  "BurstInterval": 30,
-  "TargetTemp": 0.0,
-  "TempOffset": 0.0
-}
