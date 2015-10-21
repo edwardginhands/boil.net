@@ -1,18 +1,19 @@
 <div class="panel panel-primary"
      ng-controller="BoilerCtrl as vm">
     <div class="panel-heading"
-         style="font-size:large">
+         style="font-size:large"
+         id="mainBody">
         Product List
     </div>
 
     <div class="panel-body">
-        <ps-gauge metric="temp" title="Temp"></ps-gauge>
+
         <table class="table" name="table">
             <tbody>
                 <tr>
                     <td>Element</td>
                     <td>
-                        <label ng-disabled="vm.boiler.isBurstOn" ng-controller="UibButtonsController as buttons" class="btn btn-primary" ng-model="vm.boiler.isElementOn" uib-btn-checkbox>{{ vm.boiler.isElementOn ? 'On' : 'Off' }}</label>
+                        <label ng-disabled="vm.boiler.isBurstOn" ng-controller="UibButtonsController as buttons" class="btn btn-default" ng-model="vm.boiler.isElementOn" uib-btn-checkbox>{{ vm.boiler.isElementOn ? 'On' : 'Off'}}</label>
                         <label ng-controller="UibButtonsController as buttons" class="btn btn-primary" ng-model="vm.boiler.isBurstOn" uib-btn-checkbox>Burst</label>
                             <input  type="number" name="input"  min="0" max="60" ng-model="vm.boiler.burstTime" required> Seconds, every
                             <input  type="number" name="input" min="0" max="600" ng-model="vm.boiler.burstInterval" required> Seconds
@@ -33,9 +34,10 @@
                     <td><input type="number" name="inputTempOffset" ng-model="vm.boiler.tempOffset" min="0" max="5" required></td>
                 </tr>
             </tbody>
-
         </table>
-        
     </div>
-</div>
+
+
+
+    </div>
 

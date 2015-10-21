@@ -27,9 +27,11 @@ namespace Boiler
         private void OnTimerElapsed(object sender)
         {
             IBoilerRepository repo = BoilerRepositoryFactory.GetRepository();
-            int temp = repo.GetTemperature();
+            int temp = repo.GetTemp();
+            bool element = repo.GetElementStatus();
+            bool pump = repo.GetPumpStatus();
 
-            hub.Clients.All.broadcastMessage(DateTime.UtcNow.ToString(), temp);
+            hub.Clients.All.broadcastMessage(DateTime.UtcNow.ToString(), temp, element, pump);
 
         }
 

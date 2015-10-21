@@ -9,6 +9,8 @@ namespace Boiler
     {
         Boiler Save(Boiler boiler);
         Boiler Retrieve();
-        int GetTemperature();
+        bool GetElementStatus();
+        bool GetPumpStatus();
+        int GetTemp();
     }
 }

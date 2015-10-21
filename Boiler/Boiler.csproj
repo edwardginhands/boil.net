@@ -212,10 +212,7 @@
     <Content Include="Areas\HelpPage\HelpPage.css" />
     <Content Include="common\boilerResource.js" />
     <Content Include="common\common.services.js" />
-    <Content Include="common\psGaugeDirective.js" />
-    <Content Include="common\psGaugeModule.js" />
-    <Content Include="common\psGaugeTemplate.html" />
-    <Content Include="common\psWebMetricsService.js" />
+    <Content Include="common\statusService.js" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />

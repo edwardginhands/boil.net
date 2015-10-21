@@ -31,9 +31,8 @@
 
     <script src="signalr/hubs"></script>
 
-    <script src="common/psWebMetricsService.js"></script>
-    <script src="common/psGaugeModule.js"></script>
-    <script src="common/psGaugeDirective.js"></script>
+    <script src="common/statusService.js"></script>
+
 
     <!-- Application Script -->
     <script src="app/app.js"></script>
@@ -47,7 +46,7 @@
 
     <script type="text/javascript" src="https://www.google.com/jsapi"></script>
     <script>
-        google.load("visualization", "1", { packages: ["gauge"] });
+        google.load("visualization", "1", { packages: [] });
         google.setOnLoadCallback(function () {
             angular.bootstrap(document, ['boilerManagement']);
             });

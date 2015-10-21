@@ -1,6 +1,6 @@
 {
   "IsElementOn": false,
-  "IsPumpOn": false,
+  "IsPumpOn": true,
   "IsBurstOn": false,
   "BurstTime": 10,
   "BurstInterval": 30,

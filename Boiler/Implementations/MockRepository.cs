@@ -35,10 +35,22 @@ namespace Boiler
             return boiler;
         }
 
-        public int GetTemperature()
+        public int GetTemp()
         {
             Random r = new Random();
             return r.Next(10, 90);
+        }
+
+        public bool GetElementStatus()
+        {
+            Boiler b = this.Retrieve();
+            return b.IsElementOn;
+        }
+
+        public bool GetPumpStatus()
+        {
+            Boiler b = this.Retrieve();
+            return b.IsPumpOn;
         }
 
         private bool WriteData(Boiler boiler)
@@ -51,5 +63,7 @@ namespace Boiler
 
             return true;
         }
+
+
     }
 }

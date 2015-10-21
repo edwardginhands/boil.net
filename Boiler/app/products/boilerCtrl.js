@@ -3,13 +3,26 @@
     angular
         .module("boilerManagement")
         .controller("BoilerCtrl",
-                     ["boilerResource",BoilerCtrl]);
+                     ["$scope", 'statusService', "boilerResource", BoilerCtrl]);
 
-    function BoilerCtrl(boilerResource) {
+    function BoilerCtrl($scope,statusService, boilerResource) {
         var vm = this;
 
         //vm.boiler = { isElementOn: true};
         boilerResource.query(function (data) { vm.boiler = data; });
+
+        $scope.$on('statusService-received-data-event', function (event, args) {
+            $scope.status1 = { element: "true" };
+
+            if (args.element != vm.boiler.isElementOn || args.pump != vm.boiler.isPumpOn) {
+
+                vm.boiler.isElementOn = args.element;
+                vm.boiler.isPumpOn = args.pump;
+                $scope.$apply();
+            }
+
+           // $scope.vm.boiler = $
+        });
     }
 
     angular.module('boilerManagement').controller('buttonsController', function () {

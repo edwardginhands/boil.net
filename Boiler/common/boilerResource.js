@@ -18,4 +18,5 @@
         return $resource(appSettings.serverPath + "/api/boiler", {}, { query: { method: "GET", isArray: false }, update: { method: 'PUT' } });
     }
 
+
 }());
