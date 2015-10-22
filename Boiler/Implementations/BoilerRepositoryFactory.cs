@@ -10,15 +10,11 @@ namespace Boiler
     {
         public static IBoilerRepository GetRepository()
         {
-            /*
             string typeName = ConfigurationManager.AppSettings["RepositoryType"];
             Type repoType = Type.GetType(typeName);
             object repoInstance = Activator.CreateInstance(repoType);
             IBoilerRepository repo = repoInstance as IBoilerRepository;
             return repo;
-            */
-
-            return new MockRepository();
         }
     }
 }
