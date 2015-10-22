@@ -208,7 +208,7 @@
     <Content Include="app\app.js" />
     <Content Include="app\products\boilerCtrl.js" />
     <Content Include="app\products\boilerView.html" />
-    <Content Include="App_Data\data.json" />
+    <None Include="App_Data\data.json" />
     <Content Include="Areas\HelpPage\HelpPage.css" />
     <Content Include="common\boilerResource.js" />
     <Content Include="common\common.services.js" />

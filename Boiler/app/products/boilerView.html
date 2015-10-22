@@ -13,25 +13,25 @@
                 <tr>
                     <td>Element</td>
                     <td>
-                        <label ng-disabled="vm.boiler.isBurstOn" ng-controller="UibButtonsController as buttons" class="btn btn-default" ng-model="vm.boiler.isElementOn" uib-btn-checkbox>{{ vm.boiler.isElementOn ? 'On' : 'Off'}}</label>
-                        <label ng-controller="UibButtonsController as buttons" class="btn btn-primary" ng-model="vm.boiler.isBurstOn" uib-btn-checkbox>Burst</label>
-                            <input  type="number" name="input"  min="0" max="60" ng-model="vm.boiler.burstTime" required> Seconds, every
-                            <input  type="number" name="input" min="0" max="600" ng-model="vm.boiler.burstInterval" required> Seconds
+                        <label id="btnElement" class="btn btn-primary" ng-disabled="vm.isBurstOn" ng-model="vm.boiler.isElementOn" ng-click="click($event)"  btn-checkbox-true="1" btn-checkbox-false="0">{{ vm.boilerStatus.isElementOn ? 'On' : 'Off'}}</label>
+                        <label class="btn btn-primary" ng-model="vm.isBurstOn" uib-btn-checkbox  ng-click="burst()" >Burst</label>
+                            <input  type="number" name="input"  min="1" max="60" ng-model="vm.burstTime" required > Seconds, every
+                            <input  type="number" name="input" min="10" max="600"ng-model="vm.burstInterval" required > Seconds
                     </td>
                 </tr>
                 <tr>
                     <td>Pump</td>
-                    <td><label ng-controller="UibButtonsController as buttons" class="btn btn-primary" ng-model="vm.boiler.isPumpOn" uib-btn-checkbox>{{ vm.boiler.isPumpOn ? 'On' : 'Off'}}</label></td>
+                    <td><label  id="btnPump" class="btn btn-primary" ng-model="vm.boiler.isPumpOn" ng-click="click($event)">{{ vm.boilerStatus.isPumpOn ? 'On' : 'Off'}}</label></td>
                 </tr>
                 <tr>
                     <td>Target Temp</td>
                     <td>
-                        <input type="number" name="inputTargetTemp" ng-model="vm.boiler.targetTemp" min="0" max="100" required>
+                        <input type="number" name="inputTargetTemp" ng-model="vm.boiler.targetTemp" min="0" max="100" required ng-change="change()">
                  </td>
                 </tr>
                 <tr>
                     <td>Offset</td>
-                    <td><input type="number" name="inputTempOffset" ng-model="vm.boiler.tempOffset" min="0" max="5" required></td>
+                    <td><input type="number" name="inputTempOffset" ng-model="vm.boiler.tempOffset" min="0" max="5" required ng-change="change()"></td>
                 </tr>
             </tbody>
         </table>

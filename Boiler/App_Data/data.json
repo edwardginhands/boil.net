@@ -1,9 +1,6 @@
 {
-  "IsElementOn": true,
-  "IsPumpOn": false,
-  "IsBurstOn": false,
-  "BurstTime": 10,
-  "BurstInterval": 30,
-  "TargetTemp": 0.0,
-  "TempOffset": 0.0
+  "IsElementOn": false,
+  "IsPumpOn": true,
+  "TargetTemp": 16.0,
+  "TempOffset": 5.0
 }
