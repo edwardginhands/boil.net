@@ -208,7 +208,6 @@
     <Content Include="app\app.js" />
     <Content Include="app\products\boilerCtrl.js" />
     <Content Include="app\products\boilerView.html" />
-    <None Include="App_Data\data.json" />
     <Content Include="Areas\HelpPage\HelpPage.css" />
     <Content Include="common\boilerResource.js" />
     <Content Include="common\common.services.js" />
@@ -248,6 +247,7 @@
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\CollectionModelDescription.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ApiGroup.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\Api.cshtml" />
+    <Content Include="data.json" />
     <None Include="Properties\PublishProfiles\FileDeploy.pubxml" />
     <None Include="Scripts\jquery-2.1.4.intellisense.js" />
     <Content Include="Scripts\jquery-2.1.4.js" />

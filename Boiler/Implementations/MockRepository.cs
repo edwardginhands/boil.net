@@ -13,7 +13,7 @@ namespace Boiler
 
         public Boiler Retrieve()
         {
-            var filePath = HostingEnvironment.MapPath(@"~/App_Data/data.json");
+            var filePath = HostingEnvironment.MapPath(@"~/data.json");
 
             var json = System.IO.File.ReadAllText(filePath);
 
@@ -56,7 +56,7 @@ namespace Boiler
         private bool WriteData(Boiler boiler)
         {
             // Write out the Json
-            var filePath = HostingEnvironment.MapPath(@"~/App_Data/data.json");
+            var filePath = HostingEnvironment.MapPath(@"~/data.json");
 
             var json = JsonConvert.SerializeObject(boiler, Formatting.Indented);
             System.IO.File.WriteAllText(filePath, json);
