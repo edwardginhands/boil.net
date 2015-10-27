@@ -45,7 +45,7 @@ namespace Boiler
         public Boiler Save(Boiler boiler)
         {
             WriteData(boiler);
-            return boiler;
+            return this.Retrieve();
         }
 
         public BoilerStatus RetrieveStatus()
@@ -62,14 +62,11 @@ namespace Boiler
 
         private bool WriteData(Boiler boiler)
         {
-            // Write out the Json
-            // var filePath = HostingEnvironment.MapPath(@"~/data.json");
 
             var filePath = Path.Combine(_appEnvironment.ApplicationBasePath, "data.json");
-        
 
-            //var json = JsonConvert.SerializeObject(boiler, Formatting.Indented);
-            var json = System.IO.File.ReadAllText("data.json");
+            var json = JsonConvert.SerializeObject(boiler, Formatting.Indented);
+
             System.IO.File.WriteAllText(filePath, json);
 
             return true;

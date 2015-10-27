@@ -3,13 +3,16 @@
   "version": "1.0.0-*",
 
   "dependencies": {
+    "Angular.UI.Bootstrap": "0.14.3",
+    "AngularJS.Core": "1.4.7",
+    "AngularJS.Resource": "1.4.7",
     "Microsoft.AspNet.IISPlatformHandler": "1.0.0-beta8",
     "Microsoft.AspNet.Mvc": "6.0.0-beta8",
     "Microsoft.AspNet.Server.Kestrel": "1.0.0-beta8",
     "Microsoft.AspNet.StaticFiles": "1.0.0-beta8",
     "Microsoft.Framework.Logging": "1.0.0-beta8",
     "Microsoft.Framework.Logging.Console": "1.0.0-beta8",
-    "Microsoft.Framework.Logging.Debug" : "1.0.0-beta8"
+    "Microsoft.Framework.Logging.Debug": "1.0.0-beta8"
   },
 
   "commands": {
@@ -23,8 +26,10 @@
         "System.Web": "4.0.0.0"
       }
     },
-    "dnxcore50": {"System.configuration": "5.0.0.0",
-        "System.Web": "5.0.0.0" }
+    "dnxcore50": {
+      "System.configuration": "5.0.0.0",
+      "System.Web": "5.0.0.0"
+    }
   },
 
   "exclude": [

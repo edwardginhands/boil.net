@@ -6,6 +6,8 @@ using Microsoft.AspNet.Builder;
 using Microsoft.AspNet.Hosting;
 using Microsoft.Framework.DependencyInjection;
 using Microsoft.Framework.Logging;
+using Microsoft.AspNet.Mvc;
+using Newtonsoft.Json.Serialization;
 
 namespace Boiler
 {
@@ -20,14 +22,17 @@ namespace Boiler
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
-            //  services.AddSingleton<MockRepository>();
 
-        //    string typeName = "Boiler.MockRepository";//ConfigurationManager.AppSettings["RepositoryType"];
-        //    Type repoType = Type.GetType(typeName);
 
-         //   var x = BoilerRepositoryFactory.GetRepository().GetType();
+            services.AddMvc().AddJsonOptions(options =>
+            {
+                options.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
+            });
 
-            services.AddSingleton(BoilerRepositoryFactory.GetRepository().GetType());
+            var repo = BoilerRepositoryFactory.GetRepository().GetType(); 
+            services.AddSingleton(typeof(IBoilerRepository), repo);
+
+
 
             // Uncomment the following line to add Web API services which makes it easier to port Web API 2 controllers.
             // You will also need to add the Microsoft.AspNet.Mvc.WebApiCompatShim package to the 'dependencies' section of project.json.
@@ -50,7 +55,9 @@ namespace Boiler
             // Add MVC to the request pipeline.
             app.UseMvc();
 
-            
+
+       //     config.Formatters.JsonFormatter.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
+
             // Add the following route for porting Web API 2 controllers.
             // routes.MapWebApiRoute("DefaultApi", "api/{controller}/{id?}");
 

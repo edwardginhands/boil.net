@@ -10,7 +10,7 @@ namespace Boiler
 
         IBoilerRepository _repo;
 
-        public BoilerController(MockRepository repo)
+        public BoilerController(IBoilerRepository repo)
         {
             _repo = repo;
         }
@@ -19,22 +19,21 @@ namespace Boiler
         [HttpGet]
         public Boiler Get()
         {
-          // IBoilerRepository repo = BoilerRepositoryFactory.GetRepository();
             return _repo.Retrieve();
         }
 
         // POST: api/Boiler
+        [HttpPost]
         public Boiler Post([FromBody]Boiler boiler)
         {
-            IBoilerRepository repo = BoilerRepositoryFactory.GetRepository();
-            return repo.Save(boiler);
+            return _repo.Save(boiler);
         }
 
         // PUT: api/Boiler/5
+        [HttpPut]
         public Boiler Put([FromBody]Boiler boiler)
         {
-            IBoilerRepository repo = BoilerRepositoryFactory.GetRepository();
-            return repo.Save(boiler);
+            return _repo.Save(boiler);
         }
 
     }

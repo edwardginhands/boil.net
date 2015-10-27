@@ -3,6 +3,18 @@
   "version": 2,
   "targets": {
     "DNX,Version=v4.5.1": {
+      "Angular.UI.Bootstrap/0.14.3": {
+        "type": "package"
+      },
+      "AngularJS.Core/1.4.7": {
+        "type": "package"
+      },
+      "AngularJS.Resource/1.4.7": {
+        "type": "package",
+        "dependencies": {
+          "AngularJS.Core": "1.4.7"
+        }
+      },
       "Microsoft.AspNet.Antiforgery/1.0.0-beta8": {
         "type": "package",
         "dependencies": {
@@ -1404,6 +1416,18 @@
       }
     },
     "DNXCore,Version=v5.0": {
+      "Angular.UI.Bootstrap/0.14.3": {
+        "type": "package"
+      },
+      "AngularJS.Core/1.4.7": {
+        "type": "package"
+      },
+      "AngularJS.Resource/1.4.7": {
+        "type": "package",
+        "dependencies": {
+          "AngularJS.Core": "1.4.7"
+        }
+      },
       "Microsoft.AspNet.Antiforgery/1.0.0-beta8": {
         "type": "package",
         "dependencies": {
@@ -3451,6 +3475,18 @@
       }
     },
     "DNX,Version=v4.5.1/win7-x86": {
+      "Angular.UI.Bootstrap/0.14.3": {
+        "type": "package"
+      },
+      "AngularJS.Core/1.4.7": {
+        "type": "package"
+      },
+      "AngularJS.Resource/1.4.7": {
+        "type": "package",
+        "dependencies": {
+          "AngularJS.Core": "1.4.7"
+        }
+      },
       "Microsoft.AspNet.Antiforgery/1.0.0-beta8": {
         "type": "package",
         "dependencies": {
@@ -4855,6 +4891,18 @@
       }
     },
     "DNX,Version=v4.5.1/win7-x64": {
+      "Angular.UI.Bootstrap/0.14.3": {
+        "type": "package"
+      },
+      "AngularJS.Core/1.4.7": {
+        "type": "package"
+      },
+      "AngularJS.Resource/1.4.7": {
+        "type": "package",
+        "dependencies": {
+          "AngularJS.Core": "1.4.7"
+        }
+      },
       "Microsoft.AspNet.Antiforgery/1.0.0-beta8": {
         "type": "package",
         "dependencies": {
@@ -6259,6 +6307,18 @@
       }
     },
     "DNXCore,Version=v5.0/win7-x86": {
+      "Angular.UI.Bootstrap/0.14.3": {
+        "type": "package"
+      },
+      "AngularJS.Core/1.4.7": {
+        "type": "package"
+      },
+      "AngularJS.Resource/1.4.7": {
+        "type": "package",
+        "dependencies": {
+          "AngularJS.Core": "1.4.7"
+        }
+      },
       "Microsoft.AspNet.Antiforgery/1.0.0-beta8": {
         "type": "package",
         "dependencies": {
@@ -8681,6 +8741,18 @@
       }
     },
     "DNXCore,Version=v5.0/win7-x64": {
+      "Angular.UI.Bootstrap/0.14.3": {
+        "type": "package"
+      },
+      "AngularJS.Core/1.4.7": {
+        "type": "package"
+      },
+      "AngularJS.Resource/1.4.7": {
+        "type": "package",
+        "dependencies": {
+          "AngularJS.Core": "1.4.7"
+        }
+      },
       "Microsoft.AspNet.Antiforgery/1.0.0-beta8": {
         "type": "package",
         "dependencies": {
@@ -11104,6 +11176,45 @@
     }
   },
   "libraries": {
+    "Angular.UI.Bootstrap/0.14.3": {
+      "type": "package",
+      "sha512": "CumBcW2o4oJNLHsEtLrBxM2lTFza+NGdBQ0NNTibgrwWZNDQ20WTNC79qPhbW1tVc21a1TY4deR6M752Xs5mHg==",
+      "files": [
+        "Angular.UI.Bootstrap.0.14.3.nupkg",
+        "Angular.UI.Bootstrap.0.14.3.nupkg.sha512",
+        "Angular.UI.Bootstrap.nuspec",
+        "content/Content/ui-bootstrap-csp.css",
+        "content/Scripts/angular-ui/ui-bootstrap.js",
+        "content/Scripts/angular-ui/ui-bootstrap.min.js",
+        "content/Scripts/angular-ui/ui-bootstrap-tpls.js",
+        "content/Scripts/angular-ui/ui-bootstrap-tpls.min.js"
+      ]
+    },
+    "AngularJS.Core/1.4.7": {
+      "type": "package",
+      "sha512": "lGv4My+Awg5BPCYgmt/kVE/4EDLXrYGmO1WAhaEeM8IZbyHbwK7e9LZHqum9KdfaqOY4LyEq57ul3pRD1//xkA==",
+      "files": [
+        "AngularJS.Core.1.4.7.nupkg",
+        "AngularJS.Core.1.4.7.nupkg.sha512",
+        "AngularJS.Core.nuspec",
+        "content/Scripts/angular.js",
+        "content/Scripts/angular.min.js",
+        "content/Scripts/angular.min.js.map",
+        "content/Scripts/angular-mocks.js"
+      ]
+    },
+    "AngularJS.Resource/1.4.7": {
+      "type": "package",
+      "sha512": "bf9FKHKzkKzk321lORihFjOUfrNm5bhH2I7HvqmJzy6Gp+yirV/lrWsBZyQ8lM4e/WerKIr+90cvLsGwq/DMfQ==",
+      "files": [
+        "AngularJS.Resource.1.4.7.nupkg",
+        "AngularJS.Resource.1.4.7.nupkg.sha512",
+        "AngularJS.Resource.nuspec",
+        "content/Scripts/angular-resource.js",
+        "content/Scripts/angular-resource.min.js",
+        "content/Scripts/angular-resource.min.js.map"
+      ]
+    },
     "Microsoft.AspNet.Antiforgery/1.0.0-beta8": {
       "type": "package",
       "serviceable": true,
@@ -15026,6 +15137,9 @@
   },
   "projectFileDependencyGroups": {
     "": [
+      "Angular.UI.Bootstrap >= 0.14.3",
+      "AngularJS.Core >= 1.4.7",
+      "AngularJS.Resource >= 1.4.7",
       "Microsoft.AspNet.IISPlatformHandler >= 1.0.0-beta8",
       "Microsoft.AspNet.Mvc >= 6.0.0-beta8",
       "Microsoft.AspNet.Server.Kestrel >= 1.0.0-beta8",
