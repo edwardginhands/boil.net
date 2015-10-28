@@ -40,7 +40,7 @@ namespace Boiler.Repositories
 
         public BoilerStatus RetrieveStatus()
         {
-            if(GetTemp() >= _boiler.TargetTemp-2)
+            if(GetTemp() > _boiler.TargetTemp)
             {
                 Boiler b = _boiler;
                 b.IsElementOn = false;
