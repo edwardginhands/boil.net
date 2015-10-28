@@ -8,13 +8,18 @@ using Microsoft.Framework.DependencyInjection;
 using Microsoft.Framework.Logging;
 using Microsoft.AspNet.Mvc;
 using Newtonsoft.Json.Serialization;
+using Microsoft.Framework.Configuration;
+using Microsoft.Dnx.Runtime;
+using Microsoft.Framework.ConfigurationModel;
 
 namespace Boiler
 {
     public class Startup
-    {
-        public Startup(IHostingEnvironment env)
+    { 
+        IApplicationEnvironment _app = null;
+        public Startup(IHostingEnvironment env, IApplicationEnvironment app)
         {
+            _app = app;
         }
 
         // This method gets called by a runtime.
@@ -24,14 +29,18 @@ namespace Boiler
             services.AddMvc();
 
 
+            var path = _app.ApplicationBasePath;
+            var config = new ConfigurationBuilder()
+            .AddJsonFile($"{path}/config.json")
+            .Build();
+
+            string typeName = config.Get<string>("RepositoryType");
+            services.AddSingleton(typeof(IBoilerRepository), Type.GetType(typeName));
+
             services.AddMvc().AddJsonOptions(options =>
             {
                 options.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
             });
-
-            var repo = BoilerRepositoryFactory.GetRepository().GetType(); 
-            services.AddSingleton(typeof(IBoilerRepository), repo);
-
 
 
             // Uncomment the following line to add Web API services which makes it easier to port Web API 2 controllers.
@@ -55,8 +64,6 @@ namespace Boiler
             // Add MVC to the request pipeline.
             app.UseMvc();
 
-
-       //     config.Formatters.JsonFormatter.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
 
             // Add the following route for porting Web API 2 controllers.
             // routes.MapWebApiRoute("DefaultApi", "api/{controller}/{id?}");

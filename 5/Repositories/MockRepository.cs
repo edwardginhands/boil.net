@@ -8,6 +8,7 @@ namespace Boiler
     public class MockRepository : IBoilerRepository
     {
         private readonly IApplicationEnvironment _appEnvironment;
+        private Boiler _boiler;
 
         public MockRepository()
         {
@@ -17,34 +18,17 @@ namespace Boiler
         public MockRepository(IApplicationEnvironment appEnvironment)
         {
             _appEnvironment = appEnvironment;
-            // filepath = _appEnvironment.ApplicationBasePath + "data.json";
+            _boiler = new Boiler();
         }
 
         public Boiler Retrieve()
         {
-            //var filePath = HostingEnvironment.MapPath(@"~/data.json");
-
-
-            var filePath = Path.Combine(_appEnvironment.ApplicationBasePath, "data.json");
-
-             var json = System.IO.File.ReadAllText(filePath);
-
-
-            var boiler = JsonConvert.DeserializeObject<Boiler>(json);
-            if(boiler == null)
-            {
-                boiler = new Boiler();
-                this.Save(boiler);
-
-            }
-
-            return boiler;
-
+            return _boiler;
         }
 
         public Boiler Save(Boiler boiler)
         {
-            WriteData(boiler);
+            _boiler = boiler;
             return this.Retrieve();
         }
 
@@ -57,19 +41,6 @@ namespace Boiler
             BoilerStatus bs = new BoilerStatus { IsElementOn = b.IsElementOn, IsPumpOn = b.IsPumpOn, Temp = r.Next(10, 90) };
 
             return bs;
-        }
-
-
-        private bool WriteData(Boiler boiler)
-        {
-
-            var filePath = Path.Combine(_appEnvironment.ApplicationBasePath, "data.json");
-
-            var json = JsonConvert.SerializeObject(boiler, Formatting.Indented);
-
-            System.IO.File.WriteAllText(filePath, json);
-
-            return true;
         }
 
     }

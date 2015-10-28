@@ -1071,6 +1071,40 @@
           "lib/dnx451/Microsoft.Framework.Configuration.Json.dll": {}
         }
       },
+      "Microsoft.Framework.ConfigurationModel/1.0.0-beta4": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Framework.ConfigurationModel.Interfaces": "1.0.0-beta4",
+          "Microsoft.Framework.Runtime.Interfaces": "1.0.0-beta4"
+        },
+        "frameworkAssemblies": [
+          "Microsoft.CSharp",
+          "mscorlib",
+          "System",
+          "System.Core"
+        ],
+        "compile": {
+          "lib/dnx451/Microsoft.Framework.ConfigurationModel.dll": {}
+        },
+        "runtime": {
+          "lib/dnx451/Microsoft.Framework.ConfigurationModel.dll": {}
+        }
+      },
+      "Microsoft.Framework.ConfigurationModel.Interfaces/1.0.0-beta4": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "Microsoft.CSharp",
+          "mscorlib",
+          "System",
+          "System.Core"
+        ],
+        "compile": {
+          "lib/dnx451/Microsoft.Framework.ConfigurationModel.Interfaces.dll": {}
+        },
+        "runtime": {
+          "lib/dnx451/Microsoft.Framework.ConfigurationModel.Interfaces.dll": {}
+        }
+      },
       "Microsoft.Framework.DependencyInjection/1.0.0-beta8": {
         "type": "package",
         "dependencies": {
@@ -1261,6 +1295,21 @@
           "lib/dnx451/Microsoft.Framework.Primitives.dll": {}
         }
       },
+      "Microsoft.Framework.Runtime.Interfaces/1.0.0-beta4": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "Microsoft.CSharp",
+          "mscorlib",
+          "System",
+          "System.Core"
+        ],
+        "compile": {
+          "lib/dnx451/Microsoft.Framework.Runtime.Interfaces.dll": {}
+        },
+        "runtime": {
+          "lib/dnx451/Microsoft.Framework.Runtime.Interfaces.dll": {}
+        }
+      },
       "Microsoft.Framework.WebEncoders/1.0.0-beta8": {
         "type": "package",
         "dependencies": {
@@ -1318,35 +1367,6 @@
         },
         "runtime": {
           "lib/net45/Newtonsoft.Json.dll": {}
-        }
-      },
-      "Raspberry.IO.GeneralPurpose/2.3.0": {
-        "type": "package",
-        "dependencies": {
-          "Raspberry.System": "2.0.0"
-        },
-        "compile": {
-          "lib/net40/Raspberry.IO.dll": {},
-          "lib/net40/Raspberry.IO.GeneralPurpose.dll": {},
-          "lib/net40/Raspberry.IO.Interop.dll": {}
-        },
-        "runtime": {
-          "lib/net40/Raspberry.IO.dll": {},
-          "lib/net40/Raspberry.IO.GeneralPurpose.dll": {},
-          "lib/net40/Raspberry.IO.Interop.dll": {}
-        }
-      },
-      "Raspberry.System/2.0.0": {
-        "type": "package",
-        "frameworkAssemblies": [
-          "System.Configuration",
-          "System.Core"
-        ],
-        "compile": {
-          "lib/net40/Raspberry.System.dll": {}
-        },
-        "runtime": {
-          "lib/net40/Raspberry.System.dll": {}
         }
       },
       "System.Collections.Immutable/1.1.36": {
@@ -2369,6 +2389,44 @@
           "lib/dnxcore50/Microsoft.Framework.Configuration.Json.dll": {}
         }
       },
+      "Microsoft.Framework.ConfigurationModel/1.0.0-beta4": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Framework.ConfigurationModel.Interfaces": "1.0.0-beta4",
+          "Microsoft.Framework.Runtime.Interfaces": "1.0.0-beta4",
+          "System.Collections": "4.0.10-beta-22816",
+          "System.Diagnostics.Debug": "4.0.10-beta-22816",
+          "System.IO.FileSystem": "4.0.0-beta-22816",
+          "System.Linq": "4.0.0-beta-22816",
+          "System.Resources.ResourceManager": "4.0.0-beta-22816",
+          "System.Runtime.Extensions": "4.0.10-beta-22816",
+          "System.Runtime.InteropServices": "4.0.20-beta-22816"
+        },
+        "compile": {
+          "lib/dnxcore50/Microsoft.Framework.ConfigurationModel.dll": {}
+        },
+        "runtime": {
+          "lib/dnxcore50/Microsoft.Framework.ConfigurationModel.dll": {}
+        }
+      },
+      "Microsoft.Framework.ConfigurationModel.Interfaces/1.0.0-beta4": {
+        "type": "package",
+        "dependencies": {
+          "System.Collections": "4.0.10-beta-22816",
+          "System.Diagnostics.Debug": "4.0.10-beta-22816",
+          "System.IO.FileSystem": "4.0.0-beta-22816",
+          "System.Linq": "4.0.0-beta-22816",
+          "System.Resources.ResourceManager": "4.0.0-beta-22816",
+          "System.Runtime.Extensions": "4.0.10-beta-22816",
+          "System.Runtime.InteropServices": "4.0.20-beta-22816"
+        },
+        "compile": {
+          "lib/dnxcore50/Microsoft.Framework.ConfigurationModel.Interfaces.dll": {}
+        },
+        "runtime": {
+          "lib/dnxcore50/Microsoft.Framework.ConfigurationModel.Interfaces.dll": {}
+        }
+      },
       "Microsoft.Framework.DependencyInjection/1.0.0-beta8": {
         "type": "package",
         "dependencies": {
@@ -2562,6 +2620,23 @@
         },
         "runtime": {
           "lib/dnxcore50/Microsoft.Framework.Primitives.dll": {}
+        }
+      },
+      "Microsoft.Framework.Runtime.Interfaces/1.0.0-beta4": {
+        "type": "package",
+        "dependencies": {
+          "System.ComponentModel": "4.0.0-beta-22816",
+          "System.IO": "4.0.10-beta-22816",
+          "System.Reflection": "4.0.10-beta-22816",
+          "System.Runtime": "4.0.20-beta-22816",
+          "System.Runtime.Extensions": "4.0.10-beta-22816",
+          "System.Threading.Tasks": "4.0.10-beta-22816"
+        },
+        "compile": {
+          "lib/dnxcore50/Microsoft.Framework.Runtime.Interfaces.dll": {}
+        },
+        "runtime": {
+          "lib/dnxcore50/Microsoft.Framework.Runtime.Interfaces.dll": {}
         }
       },
       "Microsoft.Framework.WebEncoders/1.0.0-beta8": {
@@ -4575,6 +4650,40 @@
           "lib/dnx451/Microsoft.Framework.Configuration.Json.dll": {}
         }
       },
+      "Microsoft.Framework.ConfigurationModel/1.0.0-beta4": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Framework.ConfigurationModel.Interfaces": "1.0.0-beta4",
+          "Microsoft.Framework.Runtime.Interfaces": "1.0.0-beta4"
+        },
+        "frameworkAssemblies": [
+          "Microsoft.CSharp",
+          "mscorlib",
+          "System",
+          "System.Core"
+        ],
+        "compile": {
+          "lib/dnx451/Microsoft.Framework.ConfigurationModel.dll": {}
+        },
+        "runtime": {
+          "lib/dnx451/Microsoft.Framework.ConfigurationModel.dll": {}
+        }
+      },
+      "Microsoft.Framework.ConfigurationModel.Interfaces/1.0.0-beta4": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "Microsoft.CSharp",
+          "mscorlib",
+          "System",
+          "System.Core"
+        ],
+        "compile": {
+          "lib/dnx451/Microsoft.Framework.ConfigurationModel.Interfaces.dll": {}
+        },
+        "runtime": {
+          "lib/dnx451/Microsoft.Framework.ConfigurationModel.Interfaces.dll": {}
+        }
+      },
       "Microsoft.Framework.DependencyInjection/1.0.0-beta8": {
         "type": "package",
         "dependencies": {
@@ -4765,6 +4874,21 @@
           "lib/dnx451/Microsoft.Framework.Primitives.dll": {}
         }
       },
+      "Microsoft.Framework.Runtime.Interfaces/1.0.0-beta4": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "Microsoft.CSharp",
+          "mscorlib",
+          "System",
+          "System.Core"
+        ],
+        "compile": {
+          "lib/dnx451/Microsoft.Framework.Runtime.Interfaces.dll": {}
+        },
+        "runtime": {
+          "lib/dnx451/Microsoft.Framework.Runtime.Interfaces.dll": {}
+        }
+      },
       "Microsoft.Framework.WebEncoders/1.0.0-beta8": {
         "type": "package",
         "dependencies": {
@@ -4822,35 +4946,6 @@
         },
         "runtime": {
           "lib/net45/Newtonsoft.Json.dll": {}
-        }
-      },
-      "Raspberry.IO.GeneralPurpose/2.3.0": {
-        "type": "package",
-        "dependencies": {
-          "Raspberry.System": "2.0.0"
-        },
-        "compile": {
-          "lib/net40/Raspberry.IO.dll": {},
-          "lib/net40/Raspberry.IO.GeneralPurpose.dll": {},
-          "lib/net40/Raspberry.IO.Interop.dll": {}
-        },
-        "runtime": {
-          "lib/net40/Raspberry.IO.dll": {},
-          "lib/net40/Raspberry.IO.GeneralPurpose.dll": {},
-          "lib/net40/Raspberry.IO.Interop.dll": {}
-        }
-      },
-      "Raspberry.System/2.0.0": {
-        "type": "package",
-        "frameworkAssemblies": [
-          "System.Configuration",
-          "System.Core"
-        ],
-        "compile": {
-          "lib/net40/Raspberry.System.dll": {}
-        },
-        "runtime": {
-          "lib/net40/Raspberry.System.dll": {}
         }
       },
       "System.Collections.Immutable/1.1.36": {
@@ -6020,6 +6115,40 @@
           "lib/dnx451/Microsoft.Framework.Configuration.Json.dll": {}
         }
       },
+      "Microsoft.Framework.ConfigurationModel/1.0.0-beta4": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Framework.ConfigurationModel.Interfaces": "1.0.0-beta4",
+          "Microsoft.Framework.Runtime.Interfaces": "1.0.0-beta4"
+        },
+        "frameworkAssemblies": [
+          "Microsoft.CSharp",
+          "mscorlib",
+          "System",
+          "System.Core"
+        ],
+        "compile": {
+          "lib/dnx451/Microsoft.Framework.ConfigurationModel.dll": {}
+        },
+        "runtime": {
+          "lib/dnx451/Microsoft.Framework.ConfigurationModel.dll": {}
+        }
+      },
+      "Microsoft.Framework.ConfigurationModel.Interfaces/1.0.0-beta4": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "Microsoft.CSharp",
+          "mscorlib",
+          "System",
+          "System.Core"
+        ],
+        "compile": {
+          "lib/dnx451/Microsoft.Framework.ConfigurationModel.Interfaces.dll": {}
+        },
+        "runtime": {
+          "lib/dnx451/Microsoft.Framework.ConfigurationModel.Interfaces.dll": {}
+        }
+      },
       "Microsoft.Framework.DependencyInjection/1.0.0-beta8": {
         "type": "package",
         "dependencies": {
@@ -6210,6 +6339,21 @@
           "lib/dnx451/Microsoft.Framework.Primitives.dll": {}
         }
       },
+      "Microsoft.Framework.Runtime.Interfaces/1.0.0-beta4": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "Microsoft.CSharp",
+          "mscorlib",
+          "System",
+          "System.Core"
+        ],
+        "compile": {
+          "lib/dnx451/Microsoft.Framework.Runtime.Interfaces.dll": {}
+        },
+        "runtime": {
+          "lib/dnx451/Microsoft.Framework.Runtime.Interfaces.dll": {}
+        }
+      },
       "Microsoft.Framework.WebEncoders/1.0.0-beta8": {
         "type": "package",
         "dependencies": {
@@ -6267,35 +6411,6 @@
         },
         "runtime": {
           "lib/net45/Newtonsoft.Json.dll": {}
-        }
-      },
-      "Raspberry.IO.GeneralPurpose/2.3.0": {
-        "type": "package",
-        "dependencies": {
-          "Raspberry.System": "2.0.0"
-        },
-        "compile": {
-          "lib/net40/Raspberry.IO.dll": {},
-          "lib/net40/Raspberry.IO.GeneralPurpose.dll": {},
-          "lib/net40/Raspberry.IO.Interop.dll": {}
-        },
-        "runtime": {
-          "lib/net40/Raspberry.IO.dll": {},
-          "lib/net40/Raspberry.IO.GeneralPurpose.dll": {},
-          "lib/net40/Raspberry.IO.Interop.dll": {}
-        }
-      },
-      "Raspberry.System/2.0.0": {
-        "type": "package",
-        "frameworkAssemblies": [
-          "System.Configuration",
-          "System.Core"
-        ],
-        "compile": {
-          "lib/net40/Raspberry.System.dll": {}
-        },
-        "runtime": {
-          "lib/net40/Raspberry.System.dll": {}
         }
       },
       "System.Collections.Immutable/1.1.36": {
@@ -7321,6 +7436,44 @@
           "lib/dnxcore50/Microsoft.Framework.Configuration.Json.dll": {}
         }
       },
+      "Microsoft.Framework.ConfigurationModel/1.0.0-beta4": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Framework.ConfigurationModel.Interfaces": "1.0.0-beta4",
+          "Microsoft.Framework.Runtime.Interfaces": "1.0.0-beta4",
+          "System.Collections": "4.0.10-beta-22816",
+          "System.Diagnostics.Debug": "4.0.10-beta-22816",
+          "System.IO.FileSystem": "4.0.0-beta-22816",
+          "System.Linq": "4.0.0-beta-22816",
+          "System.Resources.ResourceManager": "4.0.0-beta-22816",
+          "System.Runtime.Extensions": "4.0.10-beta-22816",
+          "System.Runtime.InteropServices": "4.0.20-beta-22816"
+        },
+        "compile": {
+          "lib/dnxcore50/Microsoft.Framework.ConfigurationModel.dll": {}
+        },
+        "runtime": {
+          "lib/dnxcore50/Microsoft.Framework.ConfigurationModel.dll": {}
+        }
+      },
+      "Microsoft.Framework.ConfigurationModel.Interfaces/1.0.0-beta4": {
+        "type": "package",
+        "dependencies": {
+          "System.Collections": "4.0.10-beta-22816",
+          "System.Diagnostics.Debug": "4.0.10-beta-22816",
+          "System.IO.FileSystem": "4.0.0-beta-22816",
+          "System.Linq": "4.0.0-beta-22816",
+          "System.Resources.ResourceManager": "4.0.0-beta-22816",
+          "System.Runtime.Extensions": "4.0.10-beta-22816",
+          "System.Runtime.InteropServices": "4.0.20-beta-22816"
+        },
+        "compile": {
+          "lib/dnxcore50/Microsoft.Framework.ConfigurationModel.Interfaces.dll": {}
+        },
+        "runtime": {
+          "lib/dnxcore50/Microsoft.Framework.ConfigurationModel.Interfaces.dll": {}
+        }
+      },
       "Microsoft.Framework.DependencyInjection/1.0.0-beta8": {
         "type": "package",
         "dependencies": {
@@ -7514,6 +7667,23 @@
         },
         "runtime": {
           "lib/dnxcore50/Microsoft.Framework.Primitives.dll": {}
+        }
+      },
+      "Microsoft.Framework.Runtime.Interfaces/1.0.0-beta4": {
+        "type": "package",
+        "dependencies": {
+          "System.ComponentModel": "4.0.0-beta-22816",
+          "System.IO": "4.0.10-beta-22816",
+          "System.Reflection": "4.0.10-beta-22816",
+          "System.Runtime": "4.0.20-beta-22816",
+          "System.Runtime.Extensions": "4.0.10-beta-22816",
+          "System.Threading.Tasks": "4.0.10-beta-22816"
+        },
+        "compile": {
+          "lib/dnxcore50/Microsoft.Framework.Runtime.Interfaces.dll": {}
+        },
+        "runtime": {
+          "lib/dnxcore50/Microsoft.Framework.Runtime.Interfaces.dll": {}
         }
       },
       "Microsoft.Framework.WebEncoders/1.0.0-beta8": {
@@ -9755,6 +9925,44 @@
           "lib/dnxcore50/Microsoft.Framework.Configuration.Json.dll": {}
         }
       },
+      "Microsoft.Framework.ConfigurationModel/1.0.0-beta4": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Framework.ConfigurationModel.Interfaces": "1.0.0-beta4",
+          "Microsoft.Framework.Runtime.Interfaces": "1.0.0-beta4",
+          "System.Collections": "4.0.10-beta-22816",
+          "System.Diagnostics.Debug": "4.0.10-beta-22816",
+          "System.IO.FileSystem": "4.0.0-beta-22816",
+          "System.Linq": "4.0.0-beta-22816",
+          "System.Resources.ResourceManager": "4.0.0-beta-22816",
+          "System.Runtime.Extensions": "4.0.10-beta-22816",
+          "System.Runtime.InteropServices": "4.0.20-beta-22816"
+        },
+        "compile": {
+          "lib/dnxcore50/Microsoft.Framework.ConfigurationModel.dll": {}
+        },
+        "runtime": {
+          "lib/dnxcore50/Microsoft.Framework.ConfigurationModel.dll": {}
+        }
+      },
+      "Microsoft.Framework.ConfigurationModel.Interfaces/1.0.0-beta4": {
+        "type": "package",
+        "dependencies": {
+          "System.Collections": "4.0.10-beta-22816",
+          "System.Diagnostics.Debug": "4.0.10-beta-22816",
+          "System.IO.FileSystem": "4.0.0-beta-22816",
+          "System.Linq": "4.0.0-beta-22816",
+          "System.Resources.ResourceManager": "4.0.0-beta-22816",
+          "System.Runtime.Extensions": "4.0.10-beta-22816",
+          "System.Runtime.InteropServices": "4.0.20-beta-22816"
+        },
+        "compile": {
+          "lib/dnxcore50/Microsoft.Framework.ConfigurationModel.Interfaces.dll": {}
+        },
+        "runtime": {
+          "lib/dnxcore50/Microsoft.Framework.ConfigurationModel.Interfaces.dll": {}
+        }
+      },
       "Microsoft.Framework.DependencyInjection/1.0.0-beta8": {
         "type": "package",
         "dependencies": {
@@ -9948,6 +10156,23 @@
         },
         "runtime": {
           "lib/dnxcore50/Microsoft.Framework.Primitives.dll": {}
+        }
+      },
+      "Microsoft.Framework.Runtime.Interfaces/1.0.0-beta4": {
+        "type": "package",
+        "dependencies": {
+          "System.ComponentModel": "4.0.0-beta-22816",
+          "System.IO": "4.0.10-beta-22816",
+          "System.Reflection": "4.0.10-beta-22816",
+          "System.Runtime": "4.0.20-beta-22816",
+          "System.Runtime.Extensions": "4.0.10-beta-22816",
+          "System.Threading.Tasks": "4.0.10-beta-22816"
+        },
+        "compile": {
+          "lib/dnxcore50/Microsoft.Framework.Runtime.Interfaces.dll": {}
+        },
+        "runtime": {
+          "lib/dnxcore50/Microsoft.Framework.Runtime.Interfaces.dll": {}
         }
       },
       "Microsoft.Framework.WebEncoders/1.0.0-beta8": {
@@ -12169,6 +12394,42 @@
         "Microsoft.Framework.Configuration.Json.nuspec"
       ]
     },
+    "Microsoft.Framework.ConfigurationModel/1.0.0-beta4": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "VD5MhmQRhYVfxyDs1fyruPTj3pYwLMV5dXJkPUVg1KKbJ9qr/tEn3frJA1NN1jdeVBt1RrW5FXr+wWG9YoO9Yg==",
+      "files": [
+        "lib/dnx451/Microsoft.Framework.ConfigurationModel.dll",
+        "lib/dnx451/Microsoft.Framework.ConfigurationModel.xml",
+        "lib/dnxcore50/Microsoft.Framework.ConfigurationModel.dll",
+        "lib/dnxcore50/Microsoft.Framework.ConfigurationModel.xml",
+        "lib/net45/Microsoft.Framework.ConfigurationModel.dll",
+        "lib/net45/Microsoft.Framework.ConfigurationModel.xml",
+        "lib/portable-net451+win81+wpa81/Microsoft.Framework.ConfigurationModel.dll",
+        "lib/portable-net451+win81+wpa81/Microsoft.Framework.ConfigurationModel.xml",
+        "Microsoft.Framework.ConfigurationModel.1.0.0-beta4.nupkg",
+        "Microsoft.Framework.ConfigurationModel.1.0.0-beta4.nupkg.sha512",
+        "Microsoft.Framework.ConfigurationModel.nuspec"
+      ]
+    },
+    "Microsoft.Framework.ConfigurationModel.Interfaces/1.0.0-beta4": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "lU9+gyEz+jSeR+QsZxZtDf0U2DS/pl3I8/m7YeKjHMnjqoxUKFbSOpzegll7bhq0Alw7/8gF2Byrcy+PlzRc/g==",
+      "files": [
+        "lib/dnx451/Microsoft.Framework.ConfigurationModel.Interfaces.dll",
+        "lib/dnx451/Microsoft.Framework.ConfigurationModel.Interfaces.xml",
+        "lib/dnxcore50/Microsoft.Framework.ConfigurationModel.Interfaces.dll",
+        "lib/dnxcore50/Microsoft.Framework.ConfigurationModel.Interfaces.xml",
+        "lib/net45/Microsoft.Framework.ConfigurationModel.Interfaces.dll",
+        "lib/net45/Microsoft.Framework.ConfigurationModel.Interfaces.xml",
+        "lib/portable-net451+win81+wpa81/Microsoft.Framework.ConfigurationModel.Interfaces.dll",
+        "lib/portable-net451+win81+wpa81/Microsoft.Framework.ConfigurationModel.Interfaces.xml",
+        "Microsoft.Framework.ConfigurationModel.Interfaces.1.0.0-beta4.nupkg",
+        "Microsoft.Framework.ConfigurationModel.Interfaces.1.0.0-beta4.nupkg.sha512",
+        "Microsoft.Framework.ConfigurationModel.Interfaces.nuspec"
+      ]
+    },
     "Microsoft.Framework.DependencyInjection/1.0.0-beta8": {
       "type": "package",
       "serviceable": true,
@@ -12355,6 +12616,20 @@
         "Microsoft.Framework.Primitives.nuspec"
       ]
     },
+    "Microsoft.Framework.Runtime.Interfaces/1.0.0-beta4": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "RrZdqvUm8QbgxnZQuafYGo6NezoKx7VqAfAtHVzoKBm3GSV8xlPh90u1fsGhNCv37xJNk5PuRCa4Mq27ko7pLw==",
+      "files": [
+        "lib/dnx451/Microsoft.Framework.Runtime.Interfaces.dll",
+        "lib/dnx451/Microsoft.Framework.Runtime.Interfaces.xml",
+        "lib/dnxcore50/Microsoft.Framework.Runtime.Interfaces.dll",
+        "lib/dnxcore50/Microsoft.Framework.Runtime.Interfaces.xml",
+        "Microsoft.Framework.Runtime.Interfaces.1.0.0-beta4.nupkg",
+        "Microsoft.Framework.Runtime.Interfaces.1.0.0-beta4.nupkg.sha512",
+        "Microsoft.Framework.Runtime.Interfaces.nuspec"
+      ]
+    },
     "Microsoft.Framework.WebEncoders/1.0.0-beta8": {
       "type": "package",
       "serviceable": true,
@@ -12481,31 +12756,6 @@
         "Newtonsoft.Json.6.0.6.nupkg.sha512",
         "Newtonsoft.Json.nuspec",
         "tools/install.ps1"
-      ]
-    },
-    "Raspberry.IO.GeneralPurpose/2.3.0": {
-      "type": "package",
-      "sha512": "lWe+KVZ9UKhdk6uPC/ckpPQxZqhYR9X4o/DfZScMylzulCEWFN7fE34Ju+8yJ3VKDoKrjDlSlbOZdwLdFwUZTg==",
-      "files": [
-        "lib/net40/Raspberry.IO.dll",
-        "lib/net40/Raspberry.IO.GeneralPurpose.dll",
-        "lib/net40/Raspberry.IO.GeneralPurpose.XML",
-        "lib/net40/Raspberry.IO.Interop.dll",
-        "lib/net40/Raspberry.IO.xml",
-        "Raspberry.IO.GeneralPurpose.2.3.0.nupkg",
-        "Raspberry.IO.GeneralPurpose.2.3.0.nupkg.sha512",
-        "Raspberry.IO.GeneralPurpose.nuspec"
-      ]
-    },
-    "Raspberry.System/2.0.0": {
-      "type": "package",
-      "sha512": "EDmdzYKvjbzq2AVKYm5SHMgEKmtJXMa0G3UEXFrNnxqfGZuNkbOAVN1pZOkqx2TlHiTXHb0fQtxKgXF8wXdWRw==",
-      "files": [
-        "lib/net40/Raspberry.System.dll",
-        "lib/net40/Raspberry.System.xml",
-        "Raspberry.System.2.0.0.nupkg",
-        "Raspberry.System.2.0.0.nupkg.sha512",
-        "Raspberry.System.nuspec"
       ]
     },
     "runtime.win7.System.Console/4.0.0-beta-23409": {
@@ -15256,15 +15506,13 @@
       "Microsoft.AspNet.Mvc >= 6.0.0-beta8",
       "Microsoft.AspNet.Server.Kestrel >= 1.0.0-beta8",
       "Microsoft.AspNet.StaticFiles >= 1.0.0-beta8",
+      "Microsoft.Framework.Configuration.Json >= 1.0.0-beta8",
+      "Microsoft.Framework.ConfigurationModel >= 1.0.0-beta4",
       "Microsoft.Framework.Logging >= 1.0.0-beta8",
       "Microsoft.Framework.Logging.Console >= 1.0.0-beta8",
       "Microsoft.Framework.Logging.Debug >= 1.0.0-beta8"
     ],
-    "DNX,Version=v4.5.1": [
-      "Raspberry.IO.GeneralPurpose >= 2.3.0",
-      "fx/System.configuration >= 4.0.0",
-      "fx/System.Web >= 4.0.0"
-    ],
+    "DNX,Version=v4.5.1": [],
     "DNXCore,Version=v5.0": []
   }
 }

@@ -1,6 +1,6 @@
 {
   "IsElementOn": false,
   "IsPumpOn": false,
-  "TargetTemp": 20.0,
+  "TargetTemp": 11.0,
   "TempOffset": 3.0
 }
