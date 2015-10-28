@@ -24,11 +24,15 @@
       "frameworkAssemblies": {
         "System.configuration": "4.0.0.0",
         "System.Web": "4.0.0.0"
+      },
+      "dependencies": {
+        "Raspberry.IO.GeneralPurpose": "2.3.0"
       }
     },
     "dnxcore50": {
       "System.configuration": "5.0.0.0",
-      "System.Web": "5.0.0.0"
+      "System.Web": "5.0.0.0",
+      "Raspberry.IO.GeneralPurpose": "2.3.0"
     }
   },
 
