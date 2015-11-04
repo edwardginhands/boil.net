@@ -20,6 +20,11 @@ namespace Boiler
         public Startup(IHostingEnvironment env, IApplicationEnvironment app)
         {
             _app = app;
+
+            using (var db = new BoilerDbContext())
+            {
+                db.Database.EnsureCreated();
+            }
         }
 
         // This method gets called by a runtime.

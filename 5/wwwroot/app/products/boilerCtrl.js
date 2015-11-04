@@ -27,7 +27,7 @@
 
 
         $interval(function () {
-            var res = $resource(appSettings.serverPath + "/api/boilerstatus", {}, { query: { method: "GET", isArray: false }, update: { method: 'PUT' } });
+            var res = $resource(appSettings.serverPath + "/api/boiler", {}, { query: { method: "GET", isArray: false }, update: { method: 'PUT' } });
             var y = res.query({}, function (data) {
 
                 if (data.isElementOn != vm.boilerStatus.isElementOn || data.isPumpOn != vm.boilerStatus.isPumpOn) {
@@ -47,7 +47,7 @@
                     $scope.chart = new google.visualization.Gauge(div);
                     $scope.gaugeInit = true;
                 }
-                $scope.chartData.setValue(0, 1, Math.round(data.temp));
+                $scope.chartData.setValue(0, 1, Math.round(data.actualTemp));
                 $scope.chart.draw($scope.chartData, $scope.chartOptions);
 
 

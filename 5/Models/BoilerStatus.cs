@@ -1,14 +1,91 @@
-﻿
-
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
 
 namespace Boiler
 {
-    public class BoilerStatus
+    public class BoilerStatus : IBoiler
     {
-        public bool IsElementOn { get; set; }
-        public bool IsPumpOn { get; set; }
-        public decimal Temp { get; set; }
+        [Key]
+        public int Id { get; set; }
+        public DateTime LoggedDate { get; set; }
+        private Boiler _boiler;
+
+        public BoilerStatus(Boiler boiler)
+        {
+            _boiler = boiler;
+
+        }
+
+        public decimal ActualTemp
+        {
+            get
+            {
+                return _boiler.ActualTemp;
+            }
+
+            set
+            {
+                _boiler.ActualTemp = ActualTemp;
+            }
+        }
 
 
+
+        public bool IsElementOn
+        {
+            get
+            {
+                return _boiler.IsElementOn;
+            }
+
+            set
+            {
+                _boiler.IsElementOn = IsElementOn;
+            }
+        }
+
+        public bool IsPumpOn
+        {
+            get
+            {
+                return _boiler.IsPumpOn;
+            }
+
+            set
+            {
+                _boiler.IsPumpOn = IsPumpOn;
+            }
+        }
+
+
+
+        public decimal TargetTemp
+        {
+            get
+            {
+                return _boiler.TargetTemp;
+            }
+
+            set
+            {
+                _boiler.TargetTemp = TargetTemp;
+            }
+        }
+
+        public decimal TempOffset
+        {
+            get
+            {
+                return _boiler.TempOffset;
+            }
+
+            set
+            {
+                _boiler.TempOffset = TempOffset;
+            }
+        }
     }
 }

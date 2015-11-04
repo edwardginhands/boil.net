@@ -34,34 +34,18 @@ namespace Boiler.Repositories
         {
             _boiler.IsElementOn = elementPin.State.AsBool();
             _boiler.IsPumpOn = pumpPin.State.AsBool();
+            _boiler.ActualTemp = GetTemp();
 
             return _boiler;
         }
 
-        public BoilerStatus RetrieveStatus()
-        {
-            if(GetTemp() > _boiler.TargetTemp)
-            {
-                Boiler b = _boiler;
-                b.IsElementOn = false;
-                this.Save(b);
-            }
-
-            BoilerStatus bs = new BoilerStatus
-            {
-                IsElementOn = elementPin.State.AsBool(),
-                IsPumpOn = pumpPin.State.AsBool(),
-                Temp = GetTemp()
-            };
-            return bs;
-        }
 
         public Boiler Save(Boiler boiler)
         {
             elementPin.State = boiler.IsElementOn.AsGPIOState();
             pumpPin.State = boiler.IsPumpOn.AsGPIOState();
             _boiler.TargetTemp = boiler.TargetTemp;
-            _boiler.TempOffset = boiler.TargetTemp;
+            _boiler.TempOffset = boiler.TempOffset;
 
             return this.Retrieve();
         }

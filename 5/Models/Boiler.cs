@@ -1,6 +1,4 @@
 ﻿
-
-
 namespace Boiler
 {
     public class Boiler
@@ -9,5 +7,6 @@ namespace Boiler
         public bool IsPumpOn { get; set; }
         public decimal TargetTemp { get; set; }
         public decimal TempOffset { get; set; }
+        public decimal ActualTemp { get; set; }
     }
 }

@@ -6,6 +6,5 @@ namespace Boiler
     {
         Boiler Save(Boiler boiler);
         Boiler Retrieve();
-        BoilerStatus RetrieveStatus();
     }
 }

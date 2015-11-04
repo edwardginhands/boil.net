@@ -23,7 +23,21 @@ namespace Boiler
 
         public Boiler Retrieve()
         {
+            Random r = new Random();
+            _boiler.ActualTemp = r.Next(10, 90);
+
+            using (var db = new BoilerDbContext())
+            {
+                BoilerStatus bs = new BoilerStatus(_boiler);
+                bs.LoggedDate = DateTime.Now;
+
+                db.Boiler.Add(bs);
+                db.SaveChanges();
+            }
+
             return _boiler;
+
+
         }
 
         public Boiler Save(Boiler boiler)
@@ -32,16 +46,6 @@ namespace Boiler
             return this.Retrieve();
         }
 
-        public BoilerStatus RetrieveStatus()
-        {
-            Random r = new Random();
-            Boiler b = this.Retrieve();
-            int i = r.Next(10, 90);
-
-            BoilerStatus bs = new BoilerStatus { IsElementOn = b.IsElementOn, IsPumpOn = b.IsPumpOn, Temp = r.Next(10, 90) };
-
-            return bs;
-        }
 
     }
 }
