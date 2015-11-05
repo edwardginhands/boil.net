@@ -6,36 +6,46 @@
         Product List
     </div>
 
-    <div class="panel-body">
-        <div id="chartDiv"></div>
-        <table class="table" name="table">
-            <tbody>
-                <tr>
-                    <td>Element</td>
-                    <td>
-                        <label id="btnElement" class="btn btn-primary" ng-disabled="vm.isBurstOn" ng-model="vm.boiler.isElementOn" ng-click="click($event)"  btn-checkbox-true="1" btn-checkbox-false="0">{{ vm.boilerStatus.isElementOn ? 'On' : 'Off'}}</label>
-                        <label class="btn btn-primary" ng-model="vm.isBurstOn" uib-btn-checkbox  ng-click="burst()" >Burst</label>
-                            <input  type="number" name="input"  min="1" max="60" ng-model="vm.burstTime" required > Seconds, every
-                            <input  type="number" name="input" min="10" max="600"ng-model="vm.burstInterval" required > Seconds
-                    </td>
-                </tr>
-                <tr>
-                    <td>Pump</td>
-                    <td><label  id="btnPump" class="btn btn-primary" ng-model="vm.boiler.isPumpOn" ng-click="click($event)">{{ vm.boilerStatus.isPumpOn ? 'On' : 'Off'}}</label></td>
-                </tr>
-                <tr>
-                    <td>Target Temp</td>
-                    <td>
-                        <input type="number" name="inputTargetTemp" ng-model="vm.boiler.targetTemp" min="0" max="100" required ng-change="change()">
-                 </td>
-                </tr>
-                <tr>
-                    <td>Offset</td>
-                    <td><input type="number" name="inputTempOffset" ng-model="vm.boiler.tempOffset" min="0" max="5" required ng-change="change()"></td>
-                </tr>
-            </tbody>
-        </table>
+    <div style="display:table; width:100%">
+        <div style="display:table-row">
+            <div id="chartDiv" style="display:table-cell; ali">
+            </div>
+            <div id="lineDiv" style="display:table-cell">
+            </div>
+        </div>
     </div>
+
+    <div class="panel-body">
+
+            
+            <table class="table" name="table">
+                <tbody>
+                    <tr>
+                        <td>Element</td>
+                        <td>
+                            <label id="btnElement" class="btn btn-primary" ng-disabled="vm.isBurstOn" ng-model="vm.boiler.isElementOn" ng-click="click($event)" btn-checkbox-true="1" btn-checkbox-false="0">{{ vm.boilerStatus.isElementOn ? 'On' : 'Off'}}</label>
+                            <label class="btn btn-primary" ng-model="vm.isBurstOn" uib-btn-checkbox ng-click="burst()">Burst</label>
+                            <input type="number" name="input" min="1" max="60" ng-model="vm.burstTime" required> Seconds, every
+                            <input type="number" name="input" min="10" max="600" ng-model="vm.burstInterval" required> Seconds
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Pump</td>
+                        <td><label id="btnPump" class="btn btn-primary" ng-model="vm.boiler.isPumpOn" ng-click="click($event)">{{ vm.boilerStatus.isPumpOn ? 'On' : 'Off'}}</label></td>
+                    </tr>
+                    <tr>
+                        <td>Target Temp</td>
+                        <td>
+                            <input type="number" name="inputTargetTemp" ng-model="vm.boiler.targetTemp" min="0" max="100" required ng-change="change()">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Offset</td>
+                        <td><input type="number" name="inputTempOffset" ng-model="vm.boiler.tempOffset" min="0" max="5" required ng-change="change()"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
 
     
 

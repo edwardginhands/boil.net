@@ -18,13 +18,31 @@
 
         $scope.gaugeInit = false;
         $scope.chartOptions = {
-            width: 100, height: 100,
+            width: 200, height: 200,
             redFrom: 90, redTo: 100,
             yellowFrom: 75, yellowTo: 90,
             minorTicks: 5
         };
 
+        $scope.lineOptions = {
+            hAxis: {
+                title: 'Time'
+            },
+            vAxis: {
+                title: 'Temp'
+            },
+            animation: {
+                duration: 1000,
+                easing: 'out',
+            },
+            legend: { position: 'none' }
+        };
+        $scope.lineData = new google.visualization.DataTable();
+        $scope.lineData.addColumn('timeofday', 'Time of Day');
+        $scope.lineData.addColumn('number', null);
+        $scope.rootdate = new Date();
 
+        
 
         $interval(function () {
             var res = $resource(appSettings.serverPath + "/api/boiler", {}, { query: { method: "GET", isArray: false }, update: { method: 'PUT' } });
@@ -45,14 +63,41 @@
 
                     var div = document.getElementById('chartDiv');
                     $scope.chart = new google.visualization.Gauge(div);
+
+                    var lineDiv = document.getElementById('lineDiv');
+                    $scope.lineChart = new google.visualization.LineChart(lineDiv);
+
+                   
+
+                    /*
+
+                    for (i = 0; i < 1000; i++) {
+                        $scope.lineData.addRows(
+                        [0, 0]);
+                    }
+                    */
+                   
+
                     $scope.gaugeInit = true;
                 }
-                $scope.chartData.setValue(0, 1, Math.round(data.actualTemp));
+                var dt = new Date();
+
+                var temp = parseFloat( data.actualTemp.toFixed(1))
+
+                //  $scope.lineData.addRow([[dt.getHours(),dt.getMinutes(),dt.getSeconds()], 100]);
+                $scope.lineData.addRow([[dt.getHours(), dt.getMinutes(), dt.getSeconds()], temp]);
+                if ($scope.lineData.getNumberOfRows() > 1440)
+                {
+                    $scope.lineData.removeRow(0);
+                }
+                $scope.lineChart.draw($scope.lineData, $scope.lineOptions);
+
+                $scope.chartData.setValue(0, 1, temp);
                 $scope.chart.draw($scope.chartData, $scope.chartOptions);
 
 
             });
-        }, 500);
+        }, 5000);
 
 
 

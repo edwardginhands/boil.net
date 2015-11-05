@@ -60,6 +60,19 @@ namespace Boiler
             }
         }
 
+        public bool IsAuto
+        {
+            get
+            {
+                return _boiler.IsAuto;
+            }
+
+            set
+            {
+                _boiler.IsAuto = IsAuto;
+            }
+        }
+
 
 
         public decimal TargetTemp
