@@ -30,7 +30,7 @@ namespace Boiler.Repositories
             pumpPin.State = GPIOPinDriver.GPIOState.Low;
         }
 
-        public Boiler Retrieve()
+        public IBoiler Retrieve()
         {
             _boiler.IsElementOn = elementPin.State.AsBool();
             _boiler.IsPumpOn = pumpPin.State.AsBool();
@@ -40,7 +40,7 @@ namespace Boiler.Repositories
         }
 
 
-        public Boiler Save(Boiler boiler)
+        public IBoiler Save(IBoiler boiler)
         {
             elementPin.State = boiler.IsElementOn.AsGPIOState();
             pumpPin.State = boiler.IsPumpOn.AsGPIOState();

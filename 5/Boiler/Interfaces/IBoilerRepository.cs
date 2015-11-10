@@ -4,7 +4,7 @@ namespace Boiler
 {
     public interface IBoilerRepository
     {
-        Boiler Save(Boiler boiler);
-        Boiler Retrieve();
+        IBoiler Save(IBoiler boiler);
+        IBoiler Retrieve();
     }
 }

@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 
 namespace Boiler
 {
+ 
     public interface IBoiler
     {
         bool IsElementOn { get; set; }
@@ -14,4 +15,5 @@ namespace Boiler
         decimal TempOffset { get; set; }
         decimal ActualTemp { get; set; }
     }
+
 }

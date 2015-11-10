@@ -9,7 +9,7 @@ namespace Boiler
     public class MockRepository : IBoilerRepository
     {
         private readonly IApplicationEnvironment _appEnvironment;
-        private Boiler _boiler;
+        private IBoiler _boiler;
 
 
         public MockRepository()
@@ -26,13 +26,13 @@ namespace Boiler
 
         }
 
-        public Boiler Retrieve()
+        public IBoiler Retrieve()
         {
             //MonitorState();
             return _boiler;
         }
 
-        public Boiler Save(Boiler boiler)
+        public IBoiler Save(IBoiler boiler)
         {
             _boiler = boiler;
             return this.Retrieve();

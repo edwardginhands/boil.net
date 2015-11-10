@@ -13,9 +13,9 @@ namespace Boiler
         public DateTime LoggedDate { get; set; }
         public DateTime LastOn { get; set; }
         public DateTime LastOff { get; set; }
-        private Boiler _boiler;
+        private IBoiler _boiler;
 
-        public BoilerStatus(Boiler boiler)
+        public BoilerStatus(IBoiler boiler)
         {
             _boiler = boiler;
 

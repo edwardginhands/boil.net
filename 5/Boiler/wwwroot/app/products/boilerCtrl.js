@@ -95,7 +95,7 @@
                 $scope.chartData.setValue(0, 1, temp);
                 $scope.chart.draw($scope.chartData, $scope.chartOptions);
 
-
+                vm.boiler.actualTemp = temp;
             });
         }, 5000);
 

@@ -19,21 +19,21 @@ namespace Boiler
         [HttpGet]
         public Boiler Get()
         {
-            return _repo.Retrieve();
+            return (Boiler)_repo.Retrieve();
         }
 
         // POST: api/Boiler
         [HttpPost]
         public Boiler Post([FromBody]Boiler boiler)
         {
-            return _repo.Save(boiler);
+            return (Boiler)_repo.Save(boiler);
         }
 
         // PUT: api/Boiler/5
         [HttpPut]
         public Boiler Put([FromBody]Boiler boiler)
         {
-            return _repo.Save(boiler);
+            return (Boiler)_repo.Save(boiler);
         }
 
     }
