@@ -18,7 +18,9 @@ namespace Boiler.Test
             boiler.ActualTemp = actual;
             boiler.IsElementOn = true;
 
-            IBoiler alteredBoiler = BoilerUtils.DisableOnHighTemp(boiler);
+            BoilerUtils utils = new BoilerUtils();
+
+            IBoiler alteredBoiler = utils.DisableOnHighTemp(boiler);
             Assert.Equal(alteredBoiler.IsElementOn,expected);
 
         }
@@ -35,8 +37,9 @@ namespace Boiler.Test
             boiler.TargetTemp = target;
             boiler.ActualTemp = actual;
             boiler.IsElementOn = false;
+            BoilerUtils utils = new BoilerUtils();
 
-            IBoiler alteredBoiler = BoilerUtils.DisableOnHighTemp(boiler);
+            IBoiler alteredBoiler = utils.DisableOnHighTemp(boiler);
             Assert.Equal(alteredBoiler.IsElementOn, expected);
 
         }
@@ -69,10 +72,11 @@ namespace Boiler.Test
             boiler.TargetTemp = target;
             boiler.ActualTemp = actual;
             boiler.IsElementOn = false;
+            BoilerUtils utils = new BoilerUtils();
 
             DateTime lastOff = DateTime.Now.AddSeconds(-offSeconds);
 
-            IBoiler alteredBoiler = BoilerUtils.EnableOnLowTemp(boiler, lastOff);
+            IBoiler alteredBoiler = utils.EnableOnLowTemp(boiler, lastOff);
 
             Assert.Equal(alteredBoiler.IsElementOn, expected);
 

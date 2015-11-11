@@ -45,7 +45,10 @@ namespace Boiler
             object repoInstance = Activator.CreateInstance(Type.GetType(typeName));
             IBoilerRepository repo = repoInstance as IBoilerRepository;
             services.AddInstance(typeof(IBoilerRepository), repo);
-            services.AddInstance(typeof(BoilerMonitor), new BoilerMonitor(repo));
+            TimerAdapter timer = new TimerAdapter(0, 5000);
+            BoilerUtils utils = new BoilerUtils();
+            BoilerLogger db = new BoilerLogger();
+            services.AddInstance(typeof(BoilerMonitor), new BoilerMonitor(repo, timer, utils, db));
 
             //services.AddSingleton(typeof(BoilerMonitor), typeof(BoilerMonitor));
             // services.AddSingleton(typeof(BoilerMonitor), x => new BoilerMonitor(r));

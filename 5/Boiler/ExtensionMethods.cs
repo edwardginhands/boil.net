@@ -3,7 +3,7 @@ using RaspberryGPIOManager;
 
 namespace ExtensionMethods
 {
-    public static class MyExts
+    public static class BoilerExtensionMethods
     {
         public static bool AsBool(this GPIOPinDriver.GPIOState state)
         {

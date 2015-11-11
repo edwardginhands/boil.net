@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Threading;
-using Microsoft.Dnx.Runtime;
 
 namespace Boiler
 {
@@ -12,21 +8,22 @@ namespace Boiler
         private IBoilerRepository _repo;
         private DateTime lastRecorded;
         private DateTime lastOff;
-        private Timer stateTimer;
-        private TimerCallback stateTCB;
+        private IBoilerUtils _utils;
+        private IBoilerLogger _logger;
 
 
-      public BoilerMonitor(IBoilerRepository repo)
-      {
-          _repo = repo;
+        public BoilerMonitor(IBoilerRepository repo, ITimerAdapter timer, IBoilerUtils utils, IBoilerLogger logger)
+        {
+            _repo = repo;
+            _utils = utils;
+            _logger = logger;
 
-          lastRecorded = DateTime.Now;
-          lastOff = DateTime.Now.AddHours(-1);
+            lastRecorded = DateTime.Now;
+            lastOff = DateTime.Now.AddHours(-1);
 
-          stateTCB = this.MonitorState;
-          // Create a timer
-          stateTimer = new Timer(stateTCB, null, 0, 5000);
-      }
+            timer.Initialize(this.MonitorState);
+
+        }
      
         private void MonitorState(object source)
         {
@@ -41,7 +38,7 @@ namespace Boiler
 
             IBoiler boiler = _repo.Retrieve();
 
-            IBoiler alteredBoiler = BoilerUtils.DisableOnHighTemp(boiler);
+            IBoiler alteredBoiler = _utils.DisableOnHighTemp(boiler);
 
             _repo.Save(alteredBoiler);
         }
@@ -51,7 +48,7 @@ namespace Boiler
 
             IBoiler boiler = _repo.Retrieve();
 
-            IBoiler alteredBoiler = BoilerUtils.EnableOnLowTemp(boiler, lastOff);
+            IBoiler alteredBoiler = _utils.EnableOnLowTemp(boiler, lastOff);
 
             _repo.Save(alteredBoiler);
 
@@ -60,14 +57,9 @@ namespace Boiler
         private void LogState()
         {
             IBoiler boiler = _repo.Retrieve();
-            using (var db = new BoilerDbContext())
-            {
-                BoilerStatus bs = new BoilerStatus(boiler);
-                bs.LoggedDate = DateTime.Now;
-
-                db.Boiler.Add(bs);
-                db.SaveChanges();
-            }
+            BoilerStatus bs = new BoilerStatus(boiler);
+            bs.LoggedDate = DateTime.Now;
+            _logger.LogBoilerStatus(bs);
 
         }
     }

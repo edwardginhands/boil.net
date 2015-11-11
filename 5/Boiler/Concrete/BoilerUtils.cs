@@ -5,9 +5,9 @@ using System.Threading.Tasks;
 
 namespace Boiler
 {
-    public static class BoilerUtils
+    public class BoilerUtils : IBoilerUtils
     {
-        public static IBoiler DisableOnHighTemp(IBoiler boiler)
+        public IBoiler DisableOnHighTemp(IBoiler boiler)
         {
             if (boiler.ActualTemp >= boiler.TargetTemp && boiler.IsElementOn == true)
             {
@@ -18,7 +18,7 @@ namespace Boiler
                 return boiler;
         }
 
-        public static IBoiler EnableOnLowTemp(IBoiler boiler, DateTime lastOff)
+        public IBoiler EnableOnLowTemp(IBoiler boiler, DateTime lastOff)
         {
             if ((DateTime.Now - lastOff).TotalSeconds >= 10 && boiler.ActualTemp < boiler.TargetTemp)
             {
