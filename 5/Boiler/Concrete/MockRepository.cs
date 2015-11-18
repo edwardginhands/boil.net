@@ -37,9 +37,11 @@ namespace Boiler
 
             _boiler = boiler;
 
-            // fudge to make the clock tick.
+            // fudge to make the gauge move tick.
             decimal diffInSeconds = (decimal)((DateTime.Now - _lastRecorded).TotalSeconds);
-            boiler.ActualTemp = boiler.ActualTemp + (diffInSeconds * (boiler.IsElementOn == false ? -1 : 1));
+            boiler.ActualTemp = Math.Round(boiler.ActualTemp + (diffInSeconds * (boiler.IsElementOn == false ? -1 : 1)),2);
+
+            if (boiler.ActualTemp > 100) boiler.ActualTemp = 100;
             _lastRecorded = DateTime.Now;
 
             return this.Retrieve();

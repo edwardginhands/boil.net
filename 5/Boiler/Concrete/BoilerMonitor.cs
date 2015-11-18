@@ -9,10 +9,10 @@ namespace Boiler
         private DateTime lastRecorded;
         private DateTime lastOff;
         private IBoilerUtils _utils;
-        private IBoilerLogger _logger;
+        private IBoilerStatusRepository _logger;
 
 
-        public BoilerMonitor(IBoilerRepository repo, ITimerAdapter timer, IBoilerUtils utils, IBoilerLogger logger)
+        public BoilerMonitor(IBoilerRepository repo, ITimerAdapter timer, IBoilerUtils utils, IBoilerStatusRepository logger)
         {
             _repo = repo;
             _utils = utils;
@@ -21,7 +21,12 @@ namespace Boiler
             lastRecorded = DateTime.Now;
             lastOff = DateTime.Now.AddHours(-1);
 
-            timer.Initialize(this.MonitorState);
+            IBoiler b = logger.Retrieve().ToBoiler();
+            _repo.Save(b);
+
+            timer.Initialize(MonitorState);
+            //  GC.KeepAlive(timer);
+
 
         }
      
@@ -59,7 +64,7 @@ namespace Boiler
             IBoiler boiler = _repo.Retrieve();
             BoilerStatus bs = new BoilerStatus(boiler);
             bs.LoggedDate = DateTime.Now;
-            _logger.LogBoilerStatus(bs);
+            _logger.Save(bs);
 
         }
     }

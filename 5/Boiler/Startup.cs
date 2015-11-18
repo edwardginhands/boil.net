@@ -12,6 +12,7 @@ using Microsoft.Framework.Configuration;
 using Microsoft.Dnx.Runtime;
 using Microsoft.Framework.ConfigurationModel;
 
+
 namespace Boiler
 {
     public class Startup
@@ -45,15 +46,13 @@ namespace Boiler
             object repoInstance = Activator.CreateInstance(Type.GetType(typeName));
             IBoilerRepository repo = repoInstance as IBoilerRepository;
             services.AddInstance(typeof(IBoilerRepository), repo);
-            TimerAdapter timer = new TimerAdapter(0, 5000);
+            TimerAdapter timer = new TimerAdapter(0, 500);
             BoilerUtils utils = new BoilerUtils();
-            BoilerLogger db = new BoilerLogger();
+            BoilerStatusRepository db = new BoilerStatusRepository();
             services.AddInstance(typeof(BoilerMonitor), new BoilerMonitor(repo, timer, utils, db));
 
-            //services.AddSingleton(typeof(BoilerMonitor), typeof(BoilerMonitor));
-            // services.AddSingleton(typeof(BoilerMonitor), x => new BoilerMonitor(r));
 
-            // services.AddTransient(typeof(BoilerMonitor), x => new BoilerMonitor(r, _app));
+
 
             services.AddMvc().AddJsonOptions(options =>
             {

@@ -11,6 +11,7 @@ namespace Boiler
         bool IsElementOn { get; set; }
         bool IsPumpOn { get; set; }
         bool IsAuto { get; set; }
+        bool IsBurstOn { get; set; }
         decimal TargetTemp { get; set; }
         decimal TempOffset { get; set; }
         decimal ActualTemp { get; set; }

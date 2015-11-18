@@ -9,7 +9,7 @@ namespace Boiler
     {
         public IBoiler DisableOnHighTemp(IBoiler boiler)
         {
-            if (boiler.ActualTemp >= boiler.TargetTemp && boiler.IsElementOn == true)
+            if (boiler.ActualTemp >= boiler.TargetTemp && boiler.IsElementOn == true && boiler.IsAuto==true)
             {
                 boiler.IsElementOn = false;
                 return boiler;
@@ -20,7 +20,7 @@ namespace Boiler
 
         public IBoiler EnableOnLowTemp(IBoiler boiler, DateTime lastOff)
         {
-            if ((DateTime.Now - lastOff).TotalSeconds >= 10 && boiler.ActualTemp < boiler.TargetTemp)
+            if ((DateTime.Now - lastOff).TotalSeconds >= 10 && boiler.ActualTemp < boiler.TargetTemp && boiler.IsAuto == true)
             {
                 boiler.IsElementOn = true;
                 return boiler;

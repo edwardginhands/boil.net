@@ -23,8 +23,9 @@
                     <tr>
                         <td>Element</td>
                         <td>
-                            <label id="btnElement" class="btn btn-primary" ng-disabled="vm.isBurstOn" ng-model="vm.boiler.isElementOn" ng-click="click($event)" btn-checkbox-true="1" btn-checkbox-false="0">{{ vm.boilerStatus.isElementOn ? 'On' : 'Off'}}</label>
-                            <label class="btn btn-primary" ng-model="vm.isBurstOn" uib-btn-checkbox ng-click="burst()">Burst</label>
+                            <label id="btnElement" class="btn btn-primary" ng-disabled="vm.isBurstOn || vm.isAuto" ng-model="vm.boiler.isElementOn" ng-click="click($event)" btn-checkbox-true="1" btn-checkbox-false="0">{{ vm.boilerStatus.isElementOn ? 'On' : 'Off'}}</label>
+                            <label id="btnBurst" ng-disabled="vm.isAuto" class="btn btn-primary" ng-model="vm.isBurstOn" uib-btn-checkbox ng-click="click($event)" btn-checkbox-true=true btn-checkbox-false=false>Burst</label>
+                            <label id="btnAuto" class="btn btn-primary" ng-model="vm.isAuto" uib-btn-checkbox ng-click="click($event)" btn-checkbox-true=true btn-checkbox-false=false>Auto</label> 
                             <input type="number" name="input" min="1" max="60" ng-model="vm.burstTime" required> Seconds, every
                             <input type="number" name="input" min="10" max="600" ng-model="vm.burstInterval" required> Seconds
                         </td>

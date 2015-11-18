@@ -6,9 +6,10 @@ using Microsoft.Data.Entity;
 
 namespace Boiler.Test
 {
-    public class MockBoilerLogger :  IBoilerLogger
+    public class MockBoilerLogger :  IBoilerStatusRepository
     {
         public bool isLogBoilerStatus;
+        public bool isLogRetrieveStatus;
 
         public MockBoilerLogger()
         {
@@ -20,5 +21,16 @@ namespace Boiler.Test
             isLogBoilerStatus = true;
         }
 
+        public IBoilerStatus Retrieve()
+        {
+            isLogRetrieveStatus = true;
+            return new BoilerStatus();
+        }
+
+        public IBoilerStatus Save(IBoilerStatus boiler)
+        {
+            isLogBoilerStatus = true;
+            return boiler;
+        }
     }
 }

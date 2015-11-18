@@ -37,6 +37,7 @@ namespace Boiler.Test
 
         }
 
+        [Fact]
         public void WhenCreatingANewMonitorRepoRetrieveShouldBeCalled()
         {
 
@@ -45,6 +46,7 @@ namespace Boiler.Test
 
         }
 
+        [Fact]
         public void WhenCreatingANewMonitorRepoSaveShouldBeCalled()
         {
 
@@ -53,6 +55,7 @@ namespace Boiler.Test
 
         }
 
+        [Fact]
         public void WhenCreatingANewMonitorBoilerUtilsDisableOnHighTempShouldBeCalled()
         {
 
@@ -61,6 +64,7 @@ namespace Boiler.Test
 
         }
 
+        [Fact]
         public void WhenCreatingANewMonitorBoilerUtilsDisableOnHighTempShouldBeCalledWithAValidBoiler()
         {
 
@@ -69,7 +73,7 @@ namespace Boiler.Test
 
         }
 
-
+        [Fact]
         public void WhenCreatingANewMonitorBoilerUtilsEnableOnLowTempShouldBeCalled()
         {
 
@@ -78,6 +82,7 @@ namespace Boiler.Test
 
         }
 
+        [Fact]
         public void WhenCreatingANewMonitorBoilerUtilsEnableOnLowTempShouldBeCalledAValidBoiler()
         {
 
@@ -86,6 +91,7 @@ namespace Boiler.Test
 
         }
 
+        [Fact]
         public void WhenCreatingANewMonitorBoilerUtilsEnableOnLowTempShouldBeCalledAValidDateTime()
         {
 
@@ -93,6 +99,7 @@ namespace Boiler.Test
 
         }
 
+        [Fact]
         public void WhenCreatingANewMonitorLoggerIsCalled()
         {
 
@@ -100,7 +107,13 @@ namespace Boiler.Test
 
         }
 
+        [Fact]
+        public void WhenCreatingANewMonitorTheStatusIsPutInTheRepository()
+        {
 
+            Assert.True(repo._retrieveCalledCount > 0);
+
+        }
 
     }
 }
