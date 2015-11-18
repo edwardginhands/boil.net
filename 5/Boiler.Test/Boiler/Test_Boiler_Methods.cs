@@ -3,11 +3,74 @@ using Xunit;
 
 namespace Boiler.Test
 {
-    public class Test_BoilerUtils
+    public class Test_Boiler_Methods
     {
+        [Fact]
+        public void WhenBurstTimeHasElapsed_DisableElement()
+        {
+            Boiler b = new Boiler();
+            b.BurstTime = 10;
+            b.BurstInterval= 100;
+            b.IsElementOn = true;
+            b.IsElementOn = false;
+
+            bool ret = b.BurstCycleOff(DateTime.Now.AddSeconds(11));
+
+            Assert.True(ret);
+            Assert.False(b.IsElementOn);
+        }
+
+        [Fact]
+        public void WhenBurstTimeHasNotElapsed_DoNotDisableElement()
+        {
+            Boiler b = new Boiler();
+            b.BurstTime = 10;
+            b.BurstInterval = 100;
+            b.IsElementOn = true;
+            b.IsElementOn = false;
+
+            bool ret = b.BurstCycleOff(DateTime.Now.AddSeconds(5));
+
+            Assert.False(ret);
+            Assert.True(b.IsElementOn);
+        }
+
+
+        [Fact]
+        public void WhenBurstIntervalHasElapsed_EnableElement()
+        {
+            Boiler b = new Boiler();
+            b.BurstTime = 100;
+            b.BurstInterval = 10;
+            b.IsElementOn = true;
+            b.IsElementOn = false;
+
+            bool ret = b.BurstCycleOn(DateTime.Now.AddSeconds(11));
+
+            Assert.True(ret);
+            Assert.True(b.IsElementOn);
+
+        }
+
+        [Fact]
+        public void WhenBurstIntervalHasNotElapsed_DoNotEnableElement()
+        {
+            Boiler b = new Boiler();
+            b.BurstTime = 100;
+            b.BurstInterval = 10;
+            b.IsElementOn = true;
+            b.IsElementOn = false;
+
+            bool ret = b.BurstCycleOn(DateTime.Now.AddSeconds(5));
+
+            Assert.False(ret);
+            Assert.False(b.IsElementOn);
+
+        }
+
         [Theory]
         [InlineData(80, 90, false, true),
-        InlineData(80, 70, false,  true),
+        InlineData(80, 70, false, true),
         InlineData(80, 80, false, true),
         InlineData(80, 79.99, false, true),
         InlineData(80, 80.01, false, true),
@@ -24,40 +87,14 @@ namespace Boiler.Test
             boiler.IsElementOn = true;
             boiler.IsAuto = isAuto;
 
-            BoilerUtils utils = new BoilerUtils();
-
-            IBoiler alteredBoiler = utils.DisableOnHighTemp(boiler);
-            Assert.Equal(alteredBoiler.IsElementOn,expected);
-
-        }
-        /*
-        [Theory]
-        [InlineData(80, 90,true, false),
-        InlineData(80, 70, true, false),
-        InlineData(80, 80, true, false),
-        InlineData(80, 79.99, true, false),
-        InlineData(80, 80.01, true, false)]
-        [InlineData(80, 90, false, false),
-        InlineData(80, 70, false, false),
-        InlineData(80, 80, false, false),
-        InlineData(80, 79.99, false, false),
-        InlineData(80, 80.01, false, false)]
-        public void WhenActualTemp_IsGreaterThanOrEqualToTargetAndElementIsOffAndIsAutoFalse_ElementStaysDisabled(decimal target, decimal actual, bool expected)
-        {
-            IBoiler boiler = new Boiler();
-            boiler.TargetTemp = target;
-            boiler.ActualTemp = actual;
-            boiler.IsElementOn = false;
-            BoilerUtils utils = new BoilerUtils();
-
-            IBoiler alteredBoiler = utils.DisableOnHighTemp(boiler);
-            Assert.Equal(alteredBoiler.IsElementOn, expected);
+            //BoilerUtils utils = new BoilerUtils();
+            bool ret = boiler.DisableOnHighTemp();
+            Assert.Equal(boiler.IsElementOn, expected);
 
         }
-        */
 
         [Theory]
-        [InlineData(80, 90, 0,true, false),
+        [InlineData(80, 90, 0, true, false),
         InlineData(80, 70, 0, true, false),
         InlineData(80, 80, 0, true, false),
         InlineData(80, 79.99, 0, true, false),//
@@ -70,7 +107,7 @@ namespace Boiler.Test
         InlineData(80, 90, 10, true, false),
         InlineData(80, 70, 10, true, true),
         InlineData(80, 80, 10, true, false),
-        InlineData(80, 79.99, 10, true,true),//
+        InlineData(80, 79.99, 10, true, true),//
         InlineData(80, 80.01, 10, true, false),
         InlineData(80, 90, 10.1, true, false),
         InlineData(80, 70, 10.1, true, true),
@@ -85,13 +122,12 @@ namespace Boiler.Test
             boiler.IsElementOn = false;
             boiler.IsAuto = isAuto;
 
-            BoilerUtils utils = new BoilerUtils();
 
-            DateTime lastOff = DateTime.Now.AddSeconds(-offSeconds);
 
-            IBoiler alteredBoiler = utils.EnableOnLowTemp(boiler, lastOff);
+            DateTime dueDate = DateTime.Now.AddSeconds(offSeconds);
+            boiler.EnableOnLowTemp(dueDate);
 
-            Assert.Equal(alteredBoiler.IsElementOn, expected);
+            Assert.Equal(boiler.IsElementOn, expected);
 
         }
 
@@ -124,13 +160,12 @@ namespace Boiler.Test
             boiler.IsElementOn = false;
             boiler.IsAuto = false;
 
-            BoilerUtils utils = new BoilerUtils();
 
-            DateTime lastOff = DateTime.Now.AddSeconds(-offSeconds);
+            DateTime dueDate = DateTime.Now.AddSeconds(offSeconds);
+        
+            boiler.EnableOnLowTemp(dueDate);
 
-            IBoiler alteredBoiler = utils.EnableOnLowTemp(boiler, lastOff);
-
-            Assert.Equal(alteredBoiler.IsElementOn, false);
+            Assert.Equal(boiler.IsElementOn, false);
 
         }
 

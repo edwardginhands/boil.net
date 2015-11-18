@@ -15,6 +15,15 @@ namespace Boiler
         decimal TargetTemp { get; set; }
         decimal TempOffset { get; set; }
         decimal ActualTemp { get; set; }
+        int BurstTime { get; set; }
+        int BurstInterval { get; set; }
+        DateTime LastOn { get; }
+        DateTime LastOff { get; }
+
+        bool DisableOnHighTemp();
+        bool EnableOnLowTemp(DateTime DueDate);
+        bool BurstCycleOff(DateTime DueDate);
+        bool BurstCycleOn(DateTime DueDate);
     }
 
 }

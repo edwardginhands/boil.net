@@ -6,19 +6,17 @@ namespace Boiler
     public class BoilerMonitor
     {
         private IBoilerRepository _repo;
-        private DateTime lastRecorded;
+        //private DateTime lastRecorded;
         private DateTime lastOff;
-        private IBoilerUtils _utils;
         private IBoilerStatusRepository _logger;
 
 
-        public BoilerMonitor(IBoilerRepository repo, ITimerAdapter timer, IBoilerUtils utils, IBoilerStatusRepository logger)
+        public BoilerMonitor(IBoilerRepository repo, ITimerAdapter timer, IBoilerStatusRepository logger)
         {
             _repo = repo;
-            _utils = utils;
             _logger = logger;
 
-            lastRecorded = DateTime.Now;
+           // lastRecorded = DateTime.Now;
             lastOff = DateTime.Now.AddHours(-1);
 
             IBoiler b = logger.Retrieve().ToBoiler();
@@ -32,32 +30,21 @@ namespace Boiler
      
         private void MonitorState(object source)
         {
-            CheckHighTemp();
-            CheckLowTemp();
+            IBoiler boiler = _repo.Retrieve();
+
+            DateTime n = DateTime.Now;
+
+            //boiler.DisableOnHighTemp();
+            //boiler.EnableOnLowTemp(n);
+            boiler.BurstCycleOff(n);
+            boiler.BurstCycleOn(n);
+
+            _repo.Save(boiler);
+
             LogState();
-            lastRecorded = DateTime.Now;
-        }
-
-        private void CheckHighTemp()
-        {
-
-            IBoiler boiler = _repo.Retrieve();
-
-            IBoiler alteredBoiler = _utils.DisableOnHighTemp(boiler);
-
-            _repo.Save(alteredBoiler);
-        }
-
-        private void CheckLowTemp()
-        {
-
-            IBoiler boiler = _repo.Retrieve();
-
-            IBoiler alteredBoiler = _utils.EnableOnLowTemp(boiler, lastOff);
-
-            _repo.Save(alteredBoiler);
 
         }
+
 
         private void LogState()
         {

@@ -7,7 +7,6 @@ namespace Boiler.Test
     {
         private MockRepository repo;
         private MockTimerAdapter timer;
-        private MockBoilerUtils utils;
         private MockBoilerLogger db;
         private BoilerMonitor m;
 
@@ -15,9 +14,9 @@ namespace Boiler.Test
         {
             repo = new MockRepository();
             timer = new MockTimerAdapter();
-            utils = new MockBoilerUtils();
+
             db = new MockBoilerLogger();
-            m = new BoilerMonitor(repo, timer,utils, db);
+            m = new BoilerMonitor(repo, timer, db);
 
         }
 
@@ -55,6 +54,7 @@ namespace Boiler.Test
 
         }
 
+        /*
         [Fact]
         public void WhenCreatingANewMonitorBoilerUtilsDisableOnHighTempShouldBeCalled()
         {
@@ -98,6 +98,7 @@ namespace Boiler.Test
             Assert.True(utils.enabledLastOff > DateTime.Now.AddMinutes(-61));
 
         }
+        */
 
         [Fact]
         public void WhenCreatingANewMonitorLoggerIsCalled()

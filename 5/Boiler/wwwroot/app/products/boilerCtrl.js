@@ -52,6 +52,7 @@
                 vm.boilerStatus.isElementOn = data.isElementOn;
                 vm.boilerStatus.isPumpOn = data.isPumpOn;
                 
+                /*
                 if(vm.isAuto!=data.isAuto || vm.isBurstOn!=data.isBurstOn )
                 {
                     vm.isAuto=data.isAuto;
@@ -64,6 +65,7 @@
                     vm.boilerStatus.isPumpOn = data.isPumpOn;
                     //$scope.$apply();
                 }
+                */
 
                 var dt = new Date();
                 var seconds = (dt - lastDate) / 1000;
@@ -117,27 +119,6 @@
         }
 
         $scope.click = function (e) {
-            var a = 1;
-            var id = e.target.id;
-            var x = e.target.getAttribute("statusValue");
-            var val = e.target.innerHTML;
-            var targetValue = val.trim().localeCompare("Off")==0 ? true : false;
-
-            switch(id){
-                case "btnElement":
-                    vm.boiler.isElementOn = targetValue;
-                    break;
-                case "btnPump":
-                    vm.boiler.isPumpOn = targetValue;
-                    break;
-                case "btnBurst":
-                    vm.boiler.isBurstOn = !vm.boiler.isBurstOn;
-                    break;
-                case "btnAuto":
-                    vm.boiler.isAuto = !vm.boiler.isAuto;
-                    break;
-            }
-
             this.change();
         }
 

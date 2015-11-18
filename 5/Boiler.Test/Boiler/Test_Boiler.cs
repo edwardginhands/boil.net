@@ -1,4 +1,5 @@
-﻿using Xunit;
+﻿using System;
+using Xunit;
 
 namespace Boiler.Test
 {
@@ -115,5 +116,7 @@ namespace Boiler.Test
             Boiler b = new Boiler();
             Assert.Equal(b.ActualTemp, 0);
         }
+
+
     }
 }
