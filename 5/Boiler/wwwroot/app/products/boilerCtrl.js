@@ -8,13 +8,7 @@
 
     function BoilerCtrl($scope, $interval, $timeout, $rootScope, $resource,appSettings, boilerResource) {
         var vm = this;
-        vm.boilerStatus = { isElementOn: false, isPumpOn: false };
-        //vm.boiler = { isElementOn: true};
-        boilerResource.query(function (data) { vm.boiler = data; });
-
-        $scope.isBurstOn = false;
-        vm.burstTime = 1;
-        vm.burstInterval = 10;
+        //boilerResource.query(function (data) { vm.boiler = data; });
 
         $scope.gaugeInit = false;
         $scope.chartOptions = {
@@ -50,21 +44,6 @@
             var res = $resource(appSettings.serverPath + "/api/boiler", {}, { query: { method: "GET", isArray: false }, update: { method: 'PUT' } });
             var y = res.query({}, function (data) {
                 vm.boiler = data;
-                
-                /*
-                if(vm.isAuto!=data.isAuto || vm.isBurstOn!=data.isBurstOn )
-                {
-                    vm.isAuto=data.isAuto;
-                    vm.isBurstOn=data.isBurstOn;
-                }
-
-                if (data.isElementOn != vm.boilerStatus.isElementOn || data.isPumpOn != vm.boilerStatus.isPumpOn) {
-
-                    vm.boilerStatus.isElementOn = data.isElementOn;
-                    vm.boilerStatus.isPumpOn = data.isPumpOn;
-                    //$scope.$apply();
-                }
-                */
 
                 var dt = new Date();
                 var seconds = (dt - lastDate) / 1000;
