@@ -5,15 +5,6 @@ namespace Boiler
 {
     public class Boiler : IBoiler
     {
-        //private bool _isElementOn;
-        //public bool IsElementOn
-        //{
-        //    get { return _isElementOn; }
-        //    set
-        //    {
-        //        _isElementOn = value;
-        //    }
-        //}
         public bool IsElementOn { get; set; }
         public bool IsPumpOn { get; set; }
         public bool IsBurstOn { get; set; }
@@ -72,11 +63,14 @@ namespace Boiler
 
         public bool EnableOnLowTemp(DateTime DueDate)
         {
-            if ((DueDate - _lastOff).TotalSeconds >= 10 && ActualTemp < TargetTemp && IsAuto == true)
+            if (IsAuto == true)
             {
-                if (IsElementOn == false) _lastOn = DueDate;
-                IsElementOn = true;
-                return true;
+                if (((DueDate - _lastOff).TotalSeconds >= 10 && ActualTemp < TargetTemp) || TargetTemp - ActualTemp > 5)
+                {
+                    if (IsElementOn == false) _lastOn = DueDate;
+                    IsElementOn = true;
+                    return true;
+                }
             }
             return false;
         }

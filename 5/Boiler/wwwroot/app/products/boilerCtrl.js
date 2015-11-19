@@ -8,7 +8,6 @@
 
     function BoilerCtrl($scope, $interval, $timeout, $rootScope, $resource,appSettings, boilerResource) {
         var vm = this;
-        //boilerResource.query(function (data) { vm.boiler = data; });
 
         $scope.gaugeInit = false;
         $scope.chartOptions = {
@@ -41,8 +40,7 @@
         lastDate = lastDate - 10000;
 
         $interval(function () {
-            var res = $resource(appSettings.serverPath + "/api/boiler", {}, { query: { method: "GET", isArray: false }, update: { method: 'PUT' } });
-            var y = res.query({}, function (data) {
+            boilerResource.query(function (data) {
                 vm.boiler = data;
 
                 var dt = new Date();

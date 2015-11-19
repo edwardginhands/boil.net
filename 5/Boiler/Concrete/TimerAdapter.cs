@@ -21,10 +21,7 @@ namespace Boiler
         public void Initialize(TimerCallback callback)
         {
             _callback = callback;
-              _timer = new Timer(_callback, this, _dueTime, _period);
-           // _timer = new Timer(_callback);
-
-
+            _timer = new Timer(_callback, this, _dueTime, _period);
         }
     }
 }

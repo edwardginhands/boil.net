@@ -6,7 +6,6 @@ namespace Boiler
     public class BoilerMonitor
     {
         private IBoilerRepository _repo;
-        //private DateTime lastRecorded;
         private DateTime lastOff;
         private IBoilerStatusRepository _logger;
 
@@ -16,16 +15,12 @@ namespace Boiler
             _repo = repo;
             _logger = logger;
 
-           // lastRecorded = DateTime.Now;
             lastOff = DateTime.Now.AddHours(-1);
 
             IBoiler b = logger.Retrieve().ToBoiler();
             _repo.Save(b);
 
             timer.Initialize(MonitorState);
-            //  GC.KeepAlive(timer);
-
-
         }
      
         private void MonitorState(object source)

@@ -252,16 +252,19 @@ namespace Boiler.Test
         }
 
         [Theory]
-        [InlineData(80, 90, 0, true, false),
-        InlineData(80, 70, 0, true, false),
+        [
+        // less than 10 secs can enable element if diff is > 1
+        InlineData(80, 90, 0, true, false),
+        InlineData(80, 70, 0, true, true),
         InlineData(80, 80, 0, true, false),
         InlineData(80, 79.99, 0, true, false),//
         InlineData(80, 80.01, 0, true, false),
         InlineData(80, 90, 9.9, true, false),
-        InlineData(80, 70, 9.9, true, false),
+        InlineData(80, 70, 9.9, true, true),
         InlineData(80, 80, 9.9, true, false),
         InlineData(80, 79.99, 9.9, true, false),//
         InlineData(80, 80.01, 9.9, true, false),
+
         InlineData(80, 90, 10, true, false),
         InlineData(80, 70, 10, true, true),
         InlineData(80, 80, 10, true, false),
@@ -271,7 +274,8 @@ namespace Boiler.Test
         InlineData(80, 70, 10.1, true, true),
         InlineData(80, 80, 10.1, true, false),
         InlineData(80, 79.99, 10.1, true, true),//
-        InlineData(80, 80.01, 10.1, true, false)]
+        InlineData(80, 80.01, 10.1, true, false)
+        ]
         public void WhenActualTemp_IsBelowTargetAndElementIsOffForMoreThan10SecondsAndIsAutoTrue_EnableElement(decimal target, decimal actual, double offSeconds, bool isAuto, bool expected)
         {
             IBoiler boiler = new Boiler();
