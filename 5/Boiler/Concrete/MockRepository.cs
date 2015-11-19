@@ -42,6 +42,7 @@ namespace Boiler
             boiler.ActualTemp = Math.Round(boiler.ActualTemp + (diffInSeconds * (boiler.IsElementOn == false ? -1 : 1)),2);
 
             if (boiler.ActualTemp > 100) boiler.ActualTemp = 100;
+            if (boiler.ActualTemp < 0) boiler.ActualTemp = 0;
             _lastRecorded = DateTime.Now;
 
             return this.Retrieve();

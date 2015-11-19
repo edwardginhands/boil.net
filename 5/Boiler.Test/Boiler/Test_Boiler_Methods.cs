@@ -5,14 +5,17 @@ namespace Boiler.Test
 {
     public class Test_Boiler_Methods
     {
+        // Burst enabled tests
+        #region
         [Fact]
-        public void WhenBurstTimeHasElapsed_DisableElement()
+        public void WhenBurstTimeHasElapsed_DisableElement_WhenAutoOff()
         {
             Boiler b = new Boiler();
             b.BurstTime = 10;
             b.BurstInterval= 100;
             b.IsElementOn = true;
-            b.IsElementOn = false;
+            b.IsBurstOn = true;
+            b.IsAuto = false;
 
             bool ret = b.BurstCycleOff(DateTime.Now.AddSeconds(11));
 
@@ -20,14 +23,30 @@ namespace Boiler.Test
             Assert.False(b.IsElementOn);
         }
 
-        [Fact]
-        public void WhenBurstTimeHasNotElapsed_DoNotDisableElement()
+        public void WhenBurstTimeHasElapsed_DisableElement_WhenAutoOn()
         {
             Boiler b = new Boiler();
             b.BurstTime = 10;
             b.BurstInterval = 100;
             b.IsElementOn = true;
-            b.IsElementOn = false;
+            b.IsBurstOn = true;
+            b.IsAuto = true;
+
+            bool ret = b.BurstCycleOff(DateTime.Now.AddSeconds(11));
+
+            Assert.False(ret);
+            Assert.True(b.IsElementOn);
+        }
+
+        [Fact]
+        public void WhenBurstTimeHasNotElapsed_DoNotDisableElement_WhenAutoOff()
+        {
+            Boiler b = new Boiler();
+            b.BurstTime = 10;
+            b.BurstInterval = 100;
+            b.IsElementOn = true;
+            b.IsBurstOn = true;
+            b.IsAuto = false;
 
             bool ret = b.BurstCycleOff(DateTime.Now.AddSeconds(5));
 
@@ -35,15 +54,31 @@ namespace Boiler.Test
             Assert.True(b.IsElementOn);
         }
 
+        [Fact]
+        public void WhenBurstTimeHasNotElapsed_DoNotDisableElement_WhenAutoOn()
+        {
+            Boiler b = new Boiler();
+            b.BurstTime = 10;
+            b.BurstInterval = 100;
+            b.IsElementOn = true;
+            b.IsBurstOn = true;
+            b.IsAuto = true;
+
+            bool ret = b.BurstCycleOff(DateTime.Now.AddSeconds(5));
+
+            Assert.False(ret);
+            Assert.True(b.IsElementOn);
+        }
 
         [Fact]
-        public void WhenBurstIntervalHasElapsed_EnableElement()
+        public void WhenBurstIntervalHasElapsed_EnableElement_WhenAutoOff()
         {
             Boiler b = new Boiler();
             b.BurstTime = 100;
             b.BurstInterval = 10;
             b.IsElementOn = true;
-            b.IsElementOn = false;
+            b.IsBurstOn = true;
+            b.IsAuto = false;
 
             bool ret = b.BurstCycleOn(DateTime.Now.AddSeconds(11));
 
@@ -53,13 +88,31 @@ namespace Boiler.Test
         }
 
         [Fact]
-        public void WhenBurstIntervalHasNotElapsed_DoNotEnableElement()
+        public void WhenBurstIntervalHasElapsed_EnableElement_WhenAutoOn()
+        {
+            Boiler b = new Boiler();
+            b.BurstTime = 100;
+            b.BurstInterval = 10;
+            b.IsElementOn = false;
+            b.IsBurstOn = true;
+            b.IsAuto = true;
+
+            bool ret = b.BurstCycleOn(DateTime.Now.AddSeconds(11));
+
+            Assert.False(ret);
+            Assert.False(b.IsElementOn);
+
+        }
+
+        [Fact]
+        public void WhenBurstIntervalHasNotElapsed_DoNotEnableElement_WhenAutoOff()
         {
             Boiler b = new Boiler();
             b.BurstTime = 100;
             b.BurstInterval = 10;
             b.IsElementOn = true;
-            b.IsElementOn = false;
+            b.IsBurstOn = true;
+            b.IsAuto = false;
 
             bool ret = b.BurstCycleOn(DateTime.Now.AddSeconds(5));
 
@@ -68,6 +121,111 @@ namespace Boiler.Test
 
         }
 
+        [Fact]
+        public void WhenBurstIntervalHasNotElapsed_DoNotEnableElement_WhenAutoOn()
+        {
+            Boiler b = new Boiler();
+            b.BurstTime = 100;
+            b.BurstInterval = 10;
+            b.IsElementOn = true;
+            b.IsBurstOn = true;
+            b.IsAuto = true;
+
+            bool ret = b.BurstCycleOn(DateTime.Now.AddSeconds(5));
+
+            Assert.False(ret);
+            Assert.True(b.IsElementOn);
+
+        }
+        #endregion
+
+        // Burst not enabled tests, state should remain same
+        #region
+        [Fact]
+        public void WhenBurstTimeHasElapsed_DisableElement_UnlessBurstIsOff()
+        {
+            Boiler b = new Boiler();
+            b.BurstTime = 10;
+            b.BurstInterval = 100;
+            b.IsElementOn = true;
+            b.IsBurstOn = false;
+
+            bool ret = b.BurstCycleOff(DateTime.Now.AddSeconds(11));
+
+            Assert.False(ret);
+            Assert.True(b.IsElementOn);
+        }
+
+        [Fact]
+        public void WhenBurstTimeHasNotElapsed_DoNotDisableElement_UnlessBurstIsOff()
+        {
+            Boiler b = new Boiler();
+            b.BurstTime = 10;
+            b.BurstInterval = 100;
+            b.IsElementOn = true;
+            b.IsBurstOn = false;
+
+            bool ret = b.BurstCycleOff(DateTime.Now.AddSeconds(5));
+
+            Assert.False(ret);
+            Assert.True(b.IsElementOn);
+        }
+
+
+        [Fact]
+        public void WhenBurstIntervalHasElapsed_EnableElement_UnlessBurstIsOff()
+        {
+            Boiler b = new Boiler();
+            b.BurstTime = 100;
+            b.BurstInterval = 10;
+            b.IsElementOn = true;
+            b.IsBurstOn = false;
+
+            bool ret = b.BurstCycleOn(DateTime.Now.AddSeconds(11));
+
+            Assert.False(ret);
+            Assert.True(b.IsElementOn);
+
+        }
+
+        [Fact]
+        public void WhenBurstIntervalHasNotElapsed_DoNotEnableElement_UnlessBurstIsOff()
+        {
+            Boiler b = new Boiler();
+            b.BurstTime = 100;
+            b.BurstInterval = 10;
+            b.IsElementOn = true;
+            b.IsElementOn = false;
+            b.IsBurstOn = false;
+
+            bool ret = b.BurstCycleOn(DateTime.Now.AddSeconds(5));
+
+            Assert.False(ret);
+            Assert.False(b.IsElementOn);
+
+        }
+        #endregion
+
+
+
+        [Fact]
+        public void When_DisableOnHighTemp_DisablesTheElement_TheLastOffDateIsSet()
+        {
+            Boiler b = new Boiler();
+            IBoiler boiler = new Boiler();
+            boiler.TargetTemp = 10;
+            boiler.ActualTemp = 11;
+            boiler.IsElementOn = true;
+            boiler.IsAuto = true;
+
+            DateTime dt = boiler.LastOff;
+            bool ret = boiler.DisableOnHighTemp();
+            Assert.True(dt.Ticks < boiler.LastOff.Ticks);
+
+        }
+
+        //auto mode tests
+        #region 
         [Theory]
         [InlineData(80, 90, false, true),
         InlineData(80, 70, false, true),
@@ -168,6 +326,7 @@ namespace Boiler.Test
             Assert.Equal(boiler.IsElementOn, false);
 
         }
+        #endregion
 
     }
 }

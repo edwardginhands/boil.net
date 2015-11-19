@@ -5,28 +5,16 @@ namespace Boiler
 {
     public class Boiler : IBoiler
     {
-        private bool _isElementOn;
-        public bool IsElementOn
-        {
-            get { return _isElementOn; }
-            set
-            {
-                //if (_isElementOn != value)
-                //{
-                //    switch (value)
-                //    {
-                //        case true:
-                //            _lastOn = DateTime.Now;
-                //            break;
-                //        case false:
-                //            _lastOff = DateTime.Now;
-                //            break;
-                //    }
-                //}
-
-                _isElementOn = value;
-            }
-        }
+        //private bool _isElementOn;
+        //public bool IsElementOn
+        //{
+        //    get { return _isElementOn; }
+        //    set
+        //    {
+        //        _isElementOn = value;
+        //    }
+        //}
+        public bool IsElementOn { get; set; }
         public bool IsPumpOn { get; set; }
         public bool IsBurstOn { get; set; }
         public bool IsAuto { get; set; }
@@ -44,29 +32,29 @@ namespace Boiler
 
         public Boiler()
         {
-            _isElementOn = false;
+            IsElementOn = false;
             IsBurstOn = false;
             IsPumpOn = false;
             IsAuto = false;
             TargetTemp = 0;
             TempOffset = 0;
             ActualTemp = 0;
-            _lastOn = DateTime.Now;
-            _lastOff = DateTime.Now;
+            _lastOn = DateTime.Now.AddTicks(-5);
+            _lastOff = DateTime.Now.AddTicks(-5);
         }
-        
+   
 
         public Boiler(bool IsElementOn, bool IsPumpOn, bool IsBurstOn, bool IsAuto, decimal TargetTemp, decimal TempOffset, decimal ActualTemp)
         {
-            _isElementOn = IsElementOn;
+            this.IsElementOn = IsElementOn;
             this.IsPumpOn = IsPumpOn;
             this.IsBurstOn = IsBurstOn;
             this.IsAuto = IsAuto;
             this.TargetTemp = TargetTemp;
             this.TempOffset = TempOffset;
             this.ActualTemp = ActualTemp;
-            _lastOn = DateTime.Now;
-            _lastOff = DateTime.Now;
+            _lastOn = DateTime.Now.AddTicks(-5);
+            _lastOff = DateTime.Now.AddTicks(-5);
         }
 
 
@@ -74,6 +62,7 @@ namespace Boiler
         {
             if (ActualTemp >= TargetTemp && IsElementOn == true && IsAuto == true)
             {
+                _lastOff = DateTime.Now;
                 IsElementOn = false;
                 return true;
             }
@@ -95,37 +84,41 @@ namespace Boiler
 
         public bool BurstCycleOff(DateTime DueDate)
         {
-
-
-            DateTime timeToTurnOff = _lastOn.AddSeconds(BurstTime);
-            if (timeToTurnOff < DueDate)
+            if (IsBurstOn && !IsAuto)
             {
-                if (IsElementOn == true)
-                {
-                    _lastOff = DateTime.Now;
-                }
-                IsElementOn = false;
-                return true;
-            }
-            IsElementOn = true;
-            return false;
 
+                DateTime timeToTurnOff = _lastOn.AddSeconds(BurstTime);
+                if (timeToTurnOff < DueDate)
+                {
+                    if (IsElementOn == true)
+                    {
+                        _lastOff = DateTime.Now;
+                    }
+                    IsElementOn = false;
+                    return true;
+                }
+                IsElementOn = true;
+                
+            }
+            return false;
         }
 
         public bool BurstCycleOn(DateTime DueDate)
         {
-
-            DateTime timeToTurnOn = _lastOff.AddSeconds(BurstInterval);
-            if (timeToTurnOn < DueDate)
+            if (IsBurstOn && !IsAuto)
             {
-                if (IsElementOn == false)
+                DateTime timeToTurnOn = _lastOff.AddSeconds(BurstInterval);
+                if (timeToTurnOn < DueDate)
                 {
-                    _lastOn = DateTime.Now;
+                    if (IsElementOn == false)
+                    {
+                        _lastOn = DateTime.Now;
+                    }
+                    IsElementOn = true;
+                    return true;
                 }
-                IsElementOn = true;
-                return true;
+                IsElementOn = false;
             }
-            IsElementOn = false;
             return false;
         }
     }

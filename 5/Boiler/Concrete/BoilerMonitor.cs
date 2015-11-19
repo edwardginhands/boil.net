@@ -34,8 +34,8 @@ namespace Boiler
 
             DateTime n = DateTime.Now;
 
-            //boiler.DisableOnHighTemp();
-            //boiler.EnableOnLowTemp(n);
+            boiler.DisableOnHighTemp();
+            boiler.EnableOnLowTemp(n);
             boiler.BurstCycleOff(n);
             boiler.BurstCycleOn(n);
 

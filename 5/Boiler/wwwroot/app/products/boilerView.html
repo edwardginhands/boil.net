@@ -23,7 +23,7 @@
                     <tr>
                         <td>Element</td>
                         <td>
-                            <label id="btnElement" class="btn btn-primary" ng-disabled="vm.boiler.isBurstOn || vm.boiler.isAuto" ng-model="vm.boiler.isElementOn" ng-click="click($event)" btn-checkbox-true="1" btn-checkbox-false="0">{{ vm.boilerStatus.isElementOn ? 'On' : 'Off'}}</label>
+                            <label uib-btn-checkbox id="btnElement" class="btn btn-primary" ng-disabled="vm.boiler.isBurstOn || vm.boiler.isAuto" ng-model="vm.boiler.isElementOn" ng-click="click($event)"><span ng-bind="vm.boiler.isElementOn ? 'On' : 'Off'" /></label>
                             <label id="btnBurst" ng-disabled="vm.boiler.isAuto" class="btn btn-primary" ng-model="vm.boiler.isBurstOn" uib-btn-checkbox ng-click="click($event)" btn-checkbox-true=true btn-checkbox-false=false>Burst</label>
                             <label id="btnAuto" class="btn btn-primary" ng-model="vm.boiler.isAuto" uib-btn-checkbox ng-click="click($event)" btn-checkbox-true=true btn-checkbox-false=false>Auto</label> 
                             <input type="number" name="input" min="1" max="60" ng-model="vm.boiler.burstTime" ng-change="change()" required> Seconds, every
@@ -32,7 +32,7 @@
                     </tr>
                     <tr>
                         <td>Pump</td>
-                        <td><label id="btnPump" class="btn btn-primary" ng-model="vm.boiler.isPumpOn" ng-click="click($event)">{{ vm.boilerStatus.isPumpOn ? 'On' : 'Off'}}</label></td>
+                        <td><label uib-btn-checkbox id="btnPump" class="btn btn-primary" ng-model="vm.boiler.isPumpOn" ng-click="click($event)"><span ng-bind="vm.boiler.isPumpOn ? 'On' : 'Off'" /></label></td>
                     </tr>
                     <tr>
                         <td>Target Temp</td>

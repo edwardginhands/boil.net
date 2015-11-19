@@ -18,14 +18,7 @@ namespace Boiler
         {
             using (var db = new BoilerDbContext())
             {
-               // db.ChangeTracker.AutoDetectChangesEnabled = false;
-                var b = db.Set<BoilerStatus>().OrderByDescending(t => t.Id).First();
-
-                //var x = db.Set<BoilerStatus>().AsNoTracking().ToList();
-                //var xx=db.Set<BoilerStatus>().Where(w => 1 == 1).AsNoTracking().ToList();
-                // var b = db.Boiler.OrderByDescending(t => t.Id).First();
-                //return b == null ? new BoilerStatus() : b;]
-                // var a = db.Boiler.ToList();
+                var b = db.Set<BoilerStatus>().OrderByDescending(t => t.Id).FirstOrDefault();
                 return b == null ? new BoilerStatus() : b;
             }
 

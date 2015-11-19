@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Boiler
 {
-    public interface IBoilerStatus
+    public interface IBoilerStatus : IBoiler
     {
         /*
         [Key]
@@ -27,6 +27,7 @@ namespace Boiler
         [Key]
          int Id { get; set; }
          DateTime LoggedDate { get; set; }
+        /*
          DateTime LastOn { get; set; }
          DateTime LastOff { get; set; }
          bool IsElementOn { get; set; }
@@ -36,6 +37,9 @@ namespace Boiler
          decimal TargetTemp { get; set; }
          decimal TempOffset { get; set; }
          decimal ActualTemp { get; set; }
+        int BurstTime { get; set; }
+        int BurstInterval { get; set; }
+        */
 
         IBoiler ToBoiler();
 

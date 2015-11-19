@@ -49,8 +49,7 @@
         $interval(function () {
             var res = $resource(appSettings.serverPath + "/api/boiler", {}, { query: { method: "GET", isArray: false }, update: { method: 'PUT' } });
             var y = res.query({}, function (data) {
-                vm.boilerStatus.isElementOn = data.isElementOn;
-                vm.boilerStatus.isPumpOn = data.isPumpOn;
+                vm.boiler = data;
                 
                 /*
                 if(vm.isAuto!=data.isAuto || vm.isBurstOn!=data.isBurstOn )
