@@ -25,6 +25,7 @@ namespace Boiler
             using (var db = new BoilerDbContext())
             {
                 db.Database.EnsureCreated();
+                
             }
         }
 

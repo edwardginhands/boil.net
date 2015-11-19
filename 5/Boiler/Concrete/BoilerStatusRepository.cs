@@ -29,7 +29,12 @@ namespace Boiler
 
             using (var db = new BoilerDbContext())
             {
+                var b = db.Set<BoilerStatus>().OrderByDescending(t => t.Id).Select(i => i.Id).FirstOrDefault();
+
+                db.Boiler.RemoveRange(db.Boiler.Where(w => w.Id < b - 1000000));
+
                 db.Boiler.Add((BoilerStatus)boiler);
+
                 db.SaveChanges();
             }
 

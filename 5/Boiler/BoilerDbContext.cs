@@ -1,5 +1,7 @@
 ﻿using Microsoft.Data.Entity;
 using Microsoft.Data.Sqlite;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace Boiler
 {
@@ -17,9 +19,14 @@ namespace Boiler
             var connection = new SqliteConnection(connectionString);
 
             optionsBuilder.UseSqlite(connection);
+
         }
 
-
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<BoilerStatus>()
+                .Index(b => b.Id); 
+        }
 
     }
 }

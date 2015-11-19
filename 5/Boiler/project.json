@@ -6,6 +6,7 @@
     "Angular.UI.Bootstrap": "0.14.3",
     "AngularJS.Core": "1.4.7",
     "AngularJS.Resource": "1.4.7",
+    "EntityFramework.Core": "7.0.0-beta8",
     "EntityFramework.Sqlite": "7.0.0-beta8",
     "Microsoft.AspNet.IISPlatformHandler": "1.0.0-beta8",
     "Microsoft.AspNet.Mvc": "6.0.0-beta8",
@@ -16,7 +17,6 @@
     "Microsoft.Framework.Logging": "1.0.0-beta8",
     "Microsoft.Framework.Logging.Console": "1.0.0-beta8",
     "Microsoft.Framework.Logging.Debug": "1.0.0-beta8"
-
   },
 
   "commands": {
